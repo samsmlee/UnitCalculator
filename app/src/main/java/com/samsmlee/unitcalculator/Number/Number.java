@@ -2,6 +2,8 @@ package com.samsmlee.unitcalculator.Number;
 
 import com.samsmlee.unitcalculator.Unit.Unit;
 
+import com.samsmlee.unitcalculator.Unit.UnitBase.UnitBase;
+import com.samsmlee.unitcalculator.Unit.UnitFactor;
 import com.samsmlee.unitcalculator.Unit.UnitType.UnitType;
 
 
@@ -15,9 +17,32 @@ public class Number {
     protected double value;
     private final UnitType type;
 
-    protected Number(Unit unit, double value) {
+    public Number(Unit unit, double value) {
         if (unit == null)
             throw new IllegalArgumentException("Unit cannot be null");
+        this.unit = unit;
+        this.type = unit.getType();
+        this.value = value;
+    }
+
+
+    public Number(UnitBase unitBase, UnitFactor unitFactor, double value) {
+
+        if (unitBase == null || unitFactor == null )
+            throw new IllegalArgumentException("Unit base or factor cannot be null");
+
+        Unit unit = new Unit(unitBase, unitFactor);
+        this.unit = unit;
+        this.type = unit.getType();
+        this.value = value;
+    }
+
+    public Number(UnitBase unitBase, double value) {
+
+        if (unitBase == null)
+            throw new IllegalArgumentException("Unit base cannot be null");
+
+        Unit unit = new Unit(unitBase);
         this.unit = unit;
         this.type = unit.getType();
         this.value = value;
