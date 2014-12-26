@@ -53,6 +53,13 @@ public class Unit{
 
     public static double convert(Unit fromUnit, Unit toUnit, double value) {
 
+        if (fromUnit == null) {
+            throw new IllegalArgumentException("Cannot convert from a null unit");
+        }
+        if (toUnit == null) {
+            throw new IllegalArgumentException("Cannot convert to a null unit");
+        }
+
         if (!toUnit.equalType(fromUnit))
             throw new IllegalArgumentException("Incompatible type");
 

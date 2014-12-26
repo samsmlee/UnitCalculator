@@ -69,6 +69,9 @@ public class Number {
 
     public Number convert(Unit toUnit) {
 
+        if (toUnit == null) {
+            throw new IllegalArgumentException("Cannot convert to a null unit");
+        }
         double convertedValue = Unit.convert(this.unit, toUnit, this.value);
 
         return new Number(toUnit, convertedValue);
