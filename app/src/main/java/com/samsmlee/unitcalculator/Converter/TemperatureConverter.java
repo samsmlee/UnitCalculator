@@ -12,11 +12,11 @@ public class TemperatureConverter {
             throw new IllegalArgumentException("Null unit is not allowed");
         }
         if (!fromUnit.isType(UnitType.TEMPERATURE)) {
-            throw new IllegalArgumentException(TemperatureConverter.class.toString() + " can only convert from a LENGTH unit");
+            throw new IllegalArgumentException(TemperatureConverter.class.toString() + " can only convert from a TEMPERATURE unit");
         }
 
         if (!toUnit.isType(UnitType.TEMPERATURE)) {
-            throw new IllegalArgumentException(TemperatureConverter.class.toString() + " can only convert to a LENGTH unit");
+            throw new IllegalArgumentException(TemperatureConverter.class.toString() + " can only convert to a TEMPERATURE unit");
         }
 
 
