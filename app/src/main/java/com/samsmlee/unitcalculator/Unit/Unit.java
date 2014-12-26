@@ -58,14 +58,14 @@ public class Unit{
             case LENGTH:
                 convertedValue = LengthConverter.convert(fromUnit, toUnit, value);
                 break;
+            case MASS:
+                convertedValue = MassConverter.convert(fromUnit, toUnit, value);
+                break;
             case TEMPERATURE:
                 convertedValue = TemperatureConverter.convert(fromUnit, toUnit, value);
                 break;
             case VOLUME:
                 convertedValue = VolumeConverter.convert(fromUnit, toUnit, value);
-                break;
-            case MASS:
-                convertedValue = MassConverter.convert(fromUnit, toUnit, value);
                 break;
             default:
                 // This case should not happen unless UnitType enum has changed

@@ -19,7 +19,10 @@ public enum UnitBase {
     YARD (UnitType.LENGTH),
     MILE (UnitType.LENGTH),
 
-
+    // MASS
+    OUNCE (UnitType.MASS),
+    POUND (UnitType.MASS),
+    GRAM (UnitType.MASS),
 
     // TEMPERATURE
     CELSIUS (UnitType.TEMPERATURE),
@@ -32,13 +35,7 @@ public enum UnitBase {
     FLUID_OUNCE (UnitType.VOLUME),
     PINT (UnitType.VOLUME),
     QUART (UnitType.VOLUME),
-    GALLON (UnitType.VOLUME),
-
-
-    // MASS
-    OUNCE (UnitType.MASS),
-    POUND (UnitType.MASS),
-    GRAM (UnitType.MASS);
+    GALLON (UnitType.VOLUME);
 
     // Indicates what type of unit this UnitBaseEnum is
     private final UnitType mType;

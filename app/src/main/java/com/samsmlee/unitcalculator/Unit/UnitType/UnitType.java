@@ -6,8 +6,8 @@ package com.samsmlee.unitcalculator.Unit.UnitType;
  */
 public enum UnitType {
     LENGTH,
+    MASS,
     TEMPERATURE,
-    VOLUME,
-    MASS;
+    VOLUME;
 
 }
