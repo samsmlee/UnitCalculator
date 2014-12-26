@@ -20,6 +20,10 @@ public class Unit{
         this.base = base;
         this.factor = mUnitFactor;
     }
+    public Unit(UnitBase base) {
+        this.base = base;
+        this.factor = UnitFactor.ONE;
+    }
 
     public UnitType getType()
     {
