@@ -85,6 +85,6 @@ public class Unit{
 
         UnitFactor.convert(fromUnit.getFactor(), toUnit.getFactor(), convertedValue);
 
-        return 0;
+        return convertedValue;
     }
 }
