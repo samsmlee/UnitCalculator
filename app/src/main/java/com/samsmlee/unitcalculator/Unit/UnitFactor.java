@@ -22,4 +22,14 @@ public enum UnitFactor {
     public double getFactor() {
         return factor;
     }
+
+    public static double convert(UnitFactor fromFactor, UnitFactor toFactor, double value) {
+        if (fromFactor == null || toFactor == null) {
+            throw new IllegalArgumentException("Null unit is not allowed");
+        }
+
+        return fromFactor.getFactor() / toFactor.getFactor() * value;
+    }
+
+
 }

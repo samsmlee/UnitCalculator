@@ -1,10 +1,7 @@
 package com.samsmlee.unitcalculator.Number;
 
-import com.samsmlee.unitcalculator.Converter.LengthConverter;
-import com.samsmlee.unitcalculator.Converter.TemperatureConverter;
-import com.samsmlee.unitcalculator.Converter.VolumeConverter;
-import com.samsmlee.unitcalculator.Converter.MassConverter;
 import com.samsmlee.unitcalculator.Unit.Unit;
+
 import com.samsmlee.unitcalculator.Unit.UnitType.UnitType;
 
 
@@ -47,29 +44,7 @@ public class Number {
 
     public Number convert(Unit toUnit) {
 
-        if (!toUnit.isType(this.type))
-            throw new IllegalArgumentException("Incompatible type");
-
-        double convertedValue;
-
-        switch (this.type) {
-
-            case LENGTH:
-                convertedValue = LengthConverter.convert(this.unit, toUnit, this.value);
-                break;
-            case TEMPERATURE:
-                convertedValue = TemperatureConverter.convert(this.unit, toUnit, this.value);
-                break;
-            case VOLUME:
-                convertedValue = VolumeConverter.convert(this.unit, toUnit, this.value);
-                break;
-            case MASS:
-                convertedValue = MassConverter.convert(this.unit, toUnit, this.value);
-                break;
-            default:
-                // This case should not happen unless UnitType enum has changed
-                throw new UnsupportedOperationException("This enum value, " + this.type + ", is not supported");
-        }
+        double convertedValue = Unit.convert(this.unit, toUnit, this.value);
 
         return new Number(toUnit, convertedValue);
     }
