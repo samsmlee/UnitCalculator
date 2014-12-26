@@ -77,5 +77,19 @@ public class Number {
         return new Number(toUnit, convertedValue);
     }
 
+    // Assumes UnitFactor is UnitFactor.ONE
+    public Number convert(UnitBase toBase) {
+
+        if (toBase == null) {
+            throw new IllegalArgumentException("Cannot convert to a null unit");
+        }
+
+        Unit toUnit = new Unit(toBase, UnitFactor.ONE);
+
+        double convertedValue = Unit.convert(this.unit, toUnit, this.value);
+
+        return new Number(toUnit, convertedValue);
+    }
+
 
 }
