@@ -28,7 +28,11 @@ public enum UnitBase {
 
     // VOLUME
     CUBIC_METER (UnitType.VOLUME),
+    LITER(UnitType.VOLUME),
     FLUID_OUNCE (UnitType.VOLUME),
+    PINT (UnitType.VOLUME),
+    QUART (UnitType.VOLUME),
+    GALLON (UnitType.VOLUME),
 
 
     // WEIGHT
