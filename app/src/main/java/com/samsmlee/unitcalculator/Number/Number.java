@@ -3,7 +3,7 @@ package com.samsmlee.unitcalculator.Number;
 import com.samsmlee.unitcalculator.Converter.LengthConverter;
 import com.samsmlee.unitcalculator.Converter.TemperatureConverter;
 import com.samsmlee.unitcalculator.Converter.VolumeConverter;
-import com.samsmlee.unitcalculator.Converter.WeightConverter;
+import com.samsmlee.unitcalculator.Converter.MassConverter;
 import com.samsmlee.unitcalculator.Unit.Unit;
 import com.samsmlee.unitcalculator.Unit.UnitType.UnitType;
 
@@ -63,8 +63,8 @@ public class Number {
             case VOLUME:
                 convertedValue = VolumeConverter.convert(this.unit, toUnit, this.value);
                 break;
-            case WEIGHT:
-                convertedValue = WeightConverter.convert(this.unit, toUnit, this.value);
+            case MASS:
+                convertedValue = MassConverter.convert(this.unit, toUnit, this.value);
                 break;
             default:
                 // This case should not happen unless UnitType enum has changed

@@ -8,6 +8,6 @@ public enum UnitType {
     LENGTH,
     TEMPERATURE,
     VOLUME,
-    WEIGHT;
+    MASS;
 
 }

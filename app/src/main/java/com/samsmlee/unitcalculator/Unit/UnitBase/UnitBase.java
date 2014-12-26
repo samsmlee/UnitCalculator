@@ -35,10 +35,10 @@ public enum UnitBase {
     GALLON (UnitType.VOLUME),
 
 
-    // WEIGHT
-    OUNCE (UnitType.WEIGHT),
-    POUND (UnitType.WEIGHT),
-    GRAM (UnitType.WEIGHT);
+    // MASS
+    OUNCE (UnitType.MASS),
+    POUND (UnitType.MASS),
+    GRAM (UnitType.MASS);
 
     // Indicates what type of unit this UnitBaseEnum is
     private final UnitType mType;
