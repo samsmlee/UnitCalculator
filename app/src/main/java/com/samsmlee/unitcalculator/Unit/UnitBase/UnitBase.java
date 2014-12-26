@@ -2,6 +2,8 @@ package com.samsmlee.unitcalculator.Unit.UnitBase;
 
 import com.samsmlee.unitcalculator.Unit.UnitType.UnitType;
 
+import java.util.ArrayList;
+
 /**
  * Created by Sam on 12/24/2014.
  */
@@ -54,5 +56,19 @@ public enum UnitBase {
 
     public UnitType getType() {
         return mType;
+    }
+
+    public UnitBase[] getAllUnitsByType(UnitType type) {
+        ArrayList<UnitBase> lengthUnits = new ArrayList<>();
+
+        for (UnitBase u : UnitBase.class.getEnumConstants()) {
+
+            if (u.isType(type)) {
+                lengthUnits.add(u);
+            }
+
+        }
+
+        return (UnitBase[])lengthUnits.toArray();
     }
 }

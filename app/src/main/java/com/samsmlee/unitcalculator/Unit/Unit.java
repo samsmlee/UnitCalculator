@@ -8,8 +8,9 @@ import com.samsmlee.unitcalculator.Unit.UnitType.UnitType;
  */
 public class Unit{
 
-    protected UnitBase base;
-    protected UnitFactor factor;
+    protected final UnitBase base;
+
+    protected final UnitFactor factor;
 
     public Unit(UnitBase base, UnitFactor mUnitFactor) {
         this.base = base;
@@ -26,6 +27,15 @@ public class Unit{
             return false;
         return this.getType() == type;
     }
+
+    public UnitBase getBase() {
+        return base;
+    }
+
+    public UnitFactor getFactor() {
+        return factor;
+    }
+
 
 
 }
