@@ -66,10 +66,9 @@ public class LengthConverter {
         switch (toUnit.getBase()) {
 
             case METER:
-                // as is since METER and METER are same units
-                return value;
+                return value  * 0.0254;
             case INCH:
-                return value * 0.0254;
+                return value;
             case FOOT:
                 return value / 12;
             case YARD:
@@ -87,7 +86,6 @@ public class LengthConverter {
         switch (toUnit.getBase()) {
 
             case METER:
-                // as is since METER and METER are same units
                 return value * 12 * 0.0254;
             case INCH:
                 return value * 12;
@@ -107,7 +105,6 @@ public class LengthConverter {
         switch (toUnit.getBase()) {
 
             case METER:
-                // as is since METER and METER are same units
                 return value * 3 * 12 * 0.0254;
             case INCH:
                 return value * 3 * 12;
@@ -128,7 +125,6 @@ public class LengthConverter {
         switch (toUnit.getBase()) {
 
             case METER:
-                // as is since METER and METER are same units
                 return value * 1760 * 3 * 12 * 0.0254;
             case INCH:
                 return value * 1760 * 3 * 12;
