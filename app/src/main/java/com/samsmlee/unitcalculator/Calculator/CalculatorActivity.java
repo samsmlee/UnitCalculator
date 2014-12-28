@@ -8,7 +8,6 @@ import android.view.MenuItem;
 
 import com.samsmlee.unitcalculator.R;
 
-
 public class CalculatorActivity extends ActionBarActivity {
 
     @Override
