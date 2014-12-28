@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">UnitCalculator</string>
-    <string name="title_activity_unit_type">Unit Calculator</string>
+    <string name="app_display_name">Unit Calculator</string>
     <string name="action_settings">Settings</string>
     <string name="UnitType_Name_LENGTH">Length</string>
     <string name="UnitType_Name_MASS">Mass</string>

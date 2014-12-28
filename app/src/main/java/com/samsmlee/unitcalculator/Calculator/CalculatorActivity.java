@@ -1,20 +1,25 @@
-package com.samsmlee.unitcalculator;
-
+package com.samsmlee.unitcalculator.Calculator;
 
 import android.support.v7.app.ActionBarActivity;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
-
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+
+import com.samsmlee.unitcalculator.R;
 
 
-public class UnitTypeActivity extends ActionBarActivity {
+public class CalculatorActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_unit_type);
+        setContentView(R.layout.activity_calculator);
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.container, (Fragment) new NumpadFragment())
+                    .commit();
+        }
     }
 
 
@@ -40,20 +45,4 @@ public class UnitTypeActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-    public void openLengthCalculator(View view) {
-        System.out.println("openLengthCalculator()!!");
-    }
-
-    public void openMassCalculator(View view) {
-        System.out.println("openMassCalculator()!!");
-    }
-
-    public void openTemperatureCalculator(View view) {
-        System.out.println("openTemperatureCalculator()!!");
-    }
-
-    public void openVolumeCalculator(View view) {
-        System.out.println("openVolumeCalculator()!!");
-    }
 }
