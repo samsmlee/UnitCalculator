@@ -16,36 +16,36 @@
             android:id="@+id/length_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="36sp"
-            android:paddingTop="24dip"
-            android:paddingBottom="24dip"
+            android:textSize="@dimen/unit_type_button_fontsize"
+            android:paddingTop="@dimen/unit_type_button_vertical_padding"
+            android:paddingBottom="@dimen/unit_type_button_vertical_padding"
             android:text="@string/UnitType_Name_LENGTH"
             android:onClick="openLengthCalculator"/>
         <Button
             android:id="@+id/mass_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="36sp"
-            android:paddingTop="24dip"
-            android:paddingBottom="24dip"
+            android:textSize="@dimen/unit_type_button_fontsize"
+            android:paddingTop="@dimen/unit_type_button_vertical_padding"
+            android:paddingBottom="@dimen/unit_type_button_vertical_padding"
             android:text="@string/UnitType_Name_MASS"
             android:onClick="openMassCalculator"/>
         <Button
             android:id="@+id/temperature_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="36sp"
-            android:paddingTop="24dip"
-            android:paddingBottom="24dip"
+            android:textSize="@dimen/unit_type_button_fontsize"
+            android:paddingTop="@dimen/unit_type_button_vertical_padding"
+            android:paddingBottom="@dimen/unit_type_button_vertical_padding"
             android:text="@string/UnitType_Name_TEMPERATURE"
             android:onClick="openTemperatureCalculator"/>
         <Button
             android:id="@+id/volume_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="36sp"
-            android:paddingTop="24dip"
-            android:paddingBottom="24dip"
+            android:textSize="@dimen/unit_type_button_fontsize"
+            android:paddingTop="@dimen/unit_type_button_vertical_padding"
+            android:paddingBottom="@dimen/unit_type_button_vertical_padding"
             android:text="@string/UnitType_Name_VOLUME"
             android:onClick="openVolumeCalculator"/>
     </LinearLayout>
