@@ -83,7 +83,7 @@ public class Unit{
                 throw new UnsupportedOperationException("This enum value, " + fromUnit.getType() + ", is not supported");
         }
 
-        UnitFactor.convert(fromUnit.getFactor(), toUnit.getFactor(), convertedValue);
+        convertedValue = UnitFactor.convert(fromUnit.getFactor(), toUnit.getFactor(), convertedValue);
 
         return convertedValue;
     }
