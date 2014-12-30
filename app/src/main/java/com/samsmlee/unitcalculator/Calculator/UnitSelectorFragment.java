@@ -6,26 +6,80 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.samsmlee.unitcalculator.R;
+import com.samsmlee.unitcalculator.Unit.Unit;
+import com.samsmlee.unitcalculator.Unit.UnitType.UnitType;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class UnitSelectorFragment extends Fragment {
 
-
     public UnitSelectorFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_unit_selector, container, false);
+        View view = inflater.inflate(R.layout.fragment_unit_selector, container, false);
+        populateSpinners(view);
+
+        return view;
+
     }
+
+    protected void populateSpinners(View view) {
+        UnitType type = ((CalculatorActivity) getActivity()).getType();
+
+        if (type == null) {
+            throw new IllegalArgumentException("Specify a type");
+        }
+        int arrayRes;
+        Spinner fromUnitSpinner = (Spinner) view.findViewById(R.id.fromUnitSpinner);
+        Spinner toUnitSpinner = (Spinner) view.findViewById(R.id.toUnitSpinner);
+        ArrayAdapter<Unit.DefaultUnits> unitAdapter;
+        switch (type) {
+
+            case LENGTH:
+               unitAdapter
+                        = new ArrayAdapter<Unit.DefaultUnits>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Unit.DefaultUnits.values());
+
+                break;
+            case MASS:
+                unitAdapter
+                        = new ArrayAdapter<Unit.DefaultUnits>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Unit.DefaultUnits.values());
+
+                break;
+            case TEMPERATURE:
+                unitAdapter
+                        = new ArrayAdapter<Unit.DefaultUnits>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Unit.DefaultUnits.values());
+                break;
+            case VOLUME:
+                unitAdapter
+                        = new ArrayAdapter<Unit.DefaultUnits>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Unit.DefaultUnits.values());
+                break;
+            default:
+                // This case should not happen unless UnitType enum has changed
+                throw new UnsupportedOperationException("This enum value, " + type + ", is not supported");
+        }
+
+        fromUnitSpinner.setAdapter(unitAdapter);
+        toUnitSpinner.setAdapter(unitAdapter);
+
+
+    }
+
 
 
 }

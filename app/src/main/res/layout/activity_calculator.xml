@@ -1,4 +1,24 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:id="@+id/container"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    tools:context="com.samsmlee.unitcalculator.Calculator.CalculatorActivity" tools:ignore="MergeRootFrame" />
+    tools:context="com.samsmlee.unitcalculator.Calculator.CalculatorActivity" tools:ignore="MergeRootFrame"
+    android:orientation="vertical">
+
+    <fragment
+        android:id="@+id/displayFragment"
+        android:name="com.samsmlee.unitcalculator.Calculator.DisplayFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <fragment
+        android:name="com.samsmlee.unitcalculator.Calculator.UnitSelectorFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <fragment
+        android:name="com.samsmlee.unitcalculator.Calculator.NumpadFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        />
+
+</RelativeLayout >

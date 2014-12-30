@@ -7,13 +7,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.samsmlee.unitcalculator.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DisplayFragment extends Fragment {
+public class DisplayFragment extends Fragment implements DisplayUpdateListener {
 
 
     public DisplayFragment() {
@@ -28,5 +29,21 @@ public class DisplayFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_display, container, false);
     }
 
+
+
+    @Override
+    public void updateFromUnit(String toDisplay) {
+        TextView fromScreen = (TextView) getActivity().findViewById(R.id.fromScreen);
+        fromScreen.setText(toDisplay);
+
+    }
+
+
+    @Override
+    public void updateToUnit(String toDisplay) {
+        TextView toScreen = (TextView) getActivity().findViewById(R.id.toScreen);
+        toScreen.setText(toDisplay);
+
+    }
 
 }
