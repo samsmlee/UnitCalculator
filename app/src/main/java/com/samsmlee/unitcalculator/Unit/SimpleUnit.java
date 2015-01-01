@@ -8,6 +8,7 @@ import com.samsmlee.unitcalculator.Unit.UnitType.UnitType;
 */
 public enum SimpleUnit {
 
+    // LENGTH
     METER(UnitBase.METER, UnitFactor.ONE, UnitType.LENGTH),
     CENTIMETER(UnitBase.METER, UnitFactor.CENTI, UnitType.LENGTH),
     KILOMETER(UnitBase.METER, UnitFactor.KILO, UnitType.LENGTH),
@@ -15,7 +16,29 @@ public enum SimpleUnit {
     INCH(UnitBase.INCH, UnitFactor.ONE, UnitType.LENGTH),
     FOOT(UnitBase.FOOT, UnitFactor.ONE, UnitType.LENGTH),
     YARD(UnitBase.YARD, UnitFactor.ONE, UnitType.LENGTH),
-    MILE(UnitBase.MILE, UnitFactor.ONE, UnitType.LENGTH);
+    MILE(UnitBase.MILE, UnitFactor.ONE, UnitType.LENGTH),
+
+    // MASS
+    METRIC_TON(UnitBase.METRIC_TON, UnitFactor.ONE, UnitType.MASS),
+    KILOGRAM(UnitBase.GRAM, UnitFactor.KILO, UnitType.MASS),
+    GRAM(UnitBase.GRAM, UnitFactor.ONE, UnitType.MASS),
+    MILLIGRAM(UnitBase.GRAM, UnitFactor.MILLI, UnitType.MASS),
+    POUND(UnitBase.POUND, UnitFactor.ONE, UnitType.MASS),
+    OUNCE(UnitBase.OUNCE, UnitFactor.ONE, UnitType.MASS),
+    SHORT_TON(UnitBase.SHORT_TON, UnitFactor.ONE, UnitType.MASS),
+
+    // TEMPERATURE
+    FARHENHEIT(UnitBase.FARHENHEIT, UnitFactor.ONE, UnitType.TEMPERATURE),
+    CELSIUS(UnitBase.CELSIUS, UnitFactor.ONE, UnitType.TEMPERATURE),
+    KELVIN(UnitBase.KELVIN, UnitFactor.ONE, UnitType.TEMPERATURE),
+
+    // VOLUME
+    CUBIC_METER(UnitBase.CUBIC_METER, UnitFactor.ONE, UnitType.VOLUME),
+    LITER(UnitBase.LITER, UnitFactor.ONE, UnitType.VOLUME),
+    FLUID_OUNCE(UnitBase.FLUID_OUNCE, UnitFactor.ONE, UnitType.VOLUME),
+    PINT(UnitBase.PINT, UnitFactor.ONE, UnitType.VOLUME),
+    QUART(UnitBase.QUART, UnitFactor.ONE, UnitType.VOLUME),
+    GALLON(UnitBase.GALLON, UnitFactor.ONE, UnitType.VOLUME);
 
     protected final Unit unit;
 
