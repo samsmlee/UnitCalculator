@@ -6,4 +6,6 @@
     <dimen name="unit_type_button_vertical_padding">24dip</dimen>
     <dimen name="wordFrom_display_fontsize">52sp</dimen>
     <dimen name="wordTo_display_fontsize">52sp</dimen>
+    <dimen name="unitselector_spinner_height">64dp</dimen>
+    <dimen name="numpad_key_fontsize">42sp</dimen>
 </resources>
