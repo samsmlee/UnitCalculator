@@ -14,6 +14,8 @@ public class DisplayUpdater {
 
     protected boolean hasDecimalPoint;
 
+    protected boolean aboutToReset;
+
     public DisplayUpdater(DisplayUpdateListener display) {
         if (display == null) {
             throw new IllegalArgumentException("DisplayUpdateListener is required");
@@ -21,6 +23,7 @@ public class DisplayUpdater {
         this.display = display;
         currDisplay = new StringBuilder("0");
         hasDecimalPoint = false;
+        aboutToReset = false;
     }
 
     public void enterKey(char key_char) {
@@ -37,18 +40,20 @@ public class DisplayUpdater {
                 case '7':
                 case '8':
                 case '9':
+                    if (aboutToReset)
+                        reset();
                     currDisplay.setCharAt(0, key_char);
                     display.updateFromUnit(currDisplay.toString());
                     break;
                 case '.':
+                    if (aboutToReset)
+                        reset();
                     currDisplay.append(key_char);
                     hasDecimalPoint = true;
                     display.updateFromUnit(currDisplay.toString());
                     break;
             }
-        }
-
-        else {
+        } else {
             switch (key_char) {
                 case '0':
                 case '1':
@@ -60,12 +65,19 @@ public class DisplayUpdater {
                 case '7':
                 case '8':
                 case '9':
-                    currDisplay.append(key_char);
+                    if (aboutToReset) {
+                        reset();
+                        currDisplay.setCharAt(0, key_char);
+                    } else {
+                        currDisplay.append(key_char);
+                    }
                     display.updateFromUnit(currDisplay.toString());
                     break;
                 case '.':
-                    if (!hasDecimalPoint) {
+                    if (!hasDecimalPoint || aboutToReset) {
 
+                        if (aboutToReset)
+                            reset();
                         currDisplay.append(key_char);
                         hasDecimalPoint = true;
                         display.updateFromUnit(currDisplay.toString());
@@ -77,18 +89,24 @@ public class DisplayUpdater {
     }
 
     public void runConvert(Unit fromUnit, Unit toUnit) {
+        if (fromUnit == null || toUnit == null) {
+            throw new IllegalArgumentException("Specify the units");
+        }
+
         Double currNumber = Double.parseDouble(currDisplay.toString());
 
         Number fromNumber = new Number(fromUnit, currNumber);
         Number toNumber = fromNumber.convert(toUnit);
         String converted = String.valueOf(toNumber.getValue());
+        aboutToReset = true;
+
         display.updateToUnit(converted);
-        reset();
     }
 
     protected void reset() {
         currDisplay = new StringBuilder("0");
         hasDecimalPoint = false;
+        aboutToReset = false;
     }
 
 }
