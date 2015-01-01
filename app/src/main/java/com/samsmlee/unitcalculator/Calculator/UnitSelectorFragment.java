@@ -48,26 +48,26 @@ public class UnitSelectorFragment extends Fragment {
         int arrayRes;
         Spinner fromUnitSpinner = (Spinner) view.findViewById(R.id.fromUnitSpinner);
         Spinner toUnitSpinner = (Spinner) view.findViewById(R.id.toUnitSpinner);
-        ArrayAdapter<Unit.DefaultUnits> unitAdapter;
+        ArrayAdapter<Unit.SimpleUnits> unitAdapter;
         switch (type) {
 
             case LENGTH:
                unitAdapter
-                        = new ArrayAdapter<Unit.DefaultUnits>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Unit.DefaultUnits.values());
+                        = new ArrayAdapter<Unit.SimpleUnits>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Unit.SimpleUnits.values());
 
                 break;
             case MASS:
                 unitAdapter
-                        = new ArrayAdapter<Unit.DefaultUnits>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Unit.DefaultUnits.values());
+                        = new ArrayAdapter<Unit.SimpleUnits>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Unit.SimpleUnits.values());
 
                 break;
             case TEMPERATURE:
                 unitAdapter
-                        = new ArrayAdapter<Unit.DefaultUnits>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Unit.DefaultUnits.values());
+                        = new ArrayAdapter<Unit.SimpleUnits>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Unit.SimpleUnits.values());
                 break;
             case VOLUME:
                 unitAdapter
-                        = new ArrayAdapter<Unit.DefaultUnits>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Unit.DefaultUnits.values());
+                        = new ArrayAdapter<Unit.SimpleUnits>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Unit.SimpleUnits.values());
                 break;
             default:
                 // This case should not happen unless UnitType enum has changed

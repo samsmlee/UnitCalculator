@@ -89,7 +89,7 @@ public class Unit{
     }
 
 
-    public enum DefaultUnits {
+    public enum SimpleUnits {
         METER(UnitBase.METER, UnitFactor.ONE, UnitType.LENGTH),
         CENTIMETER(UnitBase.METER, UnitFactor.CENTI, UnitType.LENGTH),
         MILLIMETER(UnitBase.METER, UnitFactor.MILLI, UnitType.LENGTH),
@@ -102,7 +102,7 @@ public class Unit{
 
         protected final UnitType type;
 
-        DefaultUnits(UnitBase base, UnitFactor factor, UnitType type) {
+        SimpleUnits(UnitBase base, UnitFactor factor, UnitType type) {
             if (base == null) {
                 throw new IllegalArgumentException("UnitBase cannot be null while constructing a " + getClass().getName());
             }

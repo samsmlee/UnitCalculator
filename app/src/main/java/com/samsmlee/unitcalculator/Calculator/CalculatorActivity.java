@@ -101,8 +101,8 @@ public class CalculatorActivity extends ActionBarActivity {
                 case '=':
                     Spinner fromUnitSpinner = (Spinner) findViewById(R.id.fromUnitSpinner);
                     Spinner toUnitSpinner = (Spinner) findViewById(R.id.toUnitSpinner);
-                    Unit fromUnit = ((Unit.DefaultUnits) fromUnitSpinner.getSelectedItem()).getUnit();
-                    Unit toUnit = ((Unit.DefaultUnits) toUnitSpinner.getSelectedItem()).getUnit();
+                    Unit fromUnit = ((Unit.SimpleUnits) fromUnitSpinner.getSelectedItem()).getUnit();
+                    Unit toUnit = ((Unit.SimpleUnits) toUnitSpinner.getSelectedItem()).getUnit();
                     updater.runConvert(fromUnit, toUnit);
                     break;
                 default:
