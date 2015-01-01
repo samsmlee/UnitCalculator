@@ -52,21 +52,19 @@ public class UnitSelectorFragment extends Fragment {
 
             case LENGTH:
                unitAdapter
-                        = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, SimpleUnit.values());
-
+                        = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, SimpleUnit.valuesByUnitType(UnitType.LENGTH));
                 break;
             case MASS:
                 unitAdapter
-                        = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, SimpleUnit.values());
-
+                        = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, SimpleUnit.valuesByUnitType(UnitType.MASS));
                 break;
             case TEMPERATURE:
                 unitAdapter
-                        = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, SimpleUnit.values());
+                        = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, SimpleUnit.valuesByUnitType(UnitType.TEMPERATURE));
                 break;
             case VOLUME:
                 unitAdapter
-                        = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, SimpleUnit.values());
+                        = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, SimpleUnit.valuesByUnitType(UnitType.VOLUME));
                 break;
             default:
                 // This case should not happen unless UnitType enum has changed

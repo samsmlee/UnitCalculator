@@ -3,6 +3,8 @@ package com.samsmlee.unitcalculator.Unit;
 import com.samsmlee.unitcalculator.Unit.UnitBase.UnitBase;
 import com.samsmlee.unitcalculator.Unit.UnitType.UnitType;
 
+import java.util.ArrayList;
+
 /**
 * Created by Sam on 1/1/2015.
 */
@@ -63,6 +65,20 @@ public enum SimpleUnit {
 
     public UnitType getType() {
         return type;
+    }
+
+    public static SimpleUnit[] valuesByUnitType(UnitType type) {
+        if (type == null) {
+            throw new IllegalArgumentException("Specify the type");
+        }
+        ArrayList<SimpleUnit> lengthUnits = new ArrayList<>();
+
+        for (SimpleUnit unit : SimpleUnit.values()) {
+            if (unit.getType() == type) {
+                lengthUnits.add(unit);
+            }
+        }
+        return lengthUnits.toArray(new SimpleUnit[lengthUnits.size()]);
     }
 
 }
