@@ -9,16 +9,21 @@
         android:name="com.samsmlee.unitcalculator.Calculator.DisplayFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         />
     <fragment
-        android:name="com.samsmlee.unitcalculator.Calculator.UnitSelectorFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <fragment
+        android:id="@+id/numpadFragment"
         android:name="com.samsmlee.unitcalculator.Calculator.NumpadFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        />
+    <fragment
+        android:id="@+id/unitSelectorFragment"
+        android:name="com.samsmlee.unitcalculator.Calculator.UnitSelectorFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/numpadFragment"
         />
 
 </RelativeLayout >

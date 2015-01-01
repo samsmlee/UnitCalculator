@@ -4,4 +4,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="unit_type_button_fontsize">36sp</dimen>
     <dimen name="unit_type_button_vertical_padding">24dip</dimen>
+    <dimen name="wordFrom_display_fontsize">52sp</dimen>
+    <dimen name="wordTo_display_fontsize">52sp</dimen>
 </resources>

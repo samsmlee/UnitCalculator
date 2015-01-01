@@ -1,34 +1,32 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context="com.samsmlee.unitcalculator.Calculator.UnitSelectorFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="From"
-            android:layout_weight="1"/>
-        <Spinner
-            android:id="@+id/fromUnitSpinner"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="To"
-            android:layout_weight="1"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="From"
+        android:layout_weight="1"/>
+    <Spinner
+        android:id="@+id/fromUnitSpinner"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"/>
 
-        <Spinner
-            android:id="@+id/toUnitSpinner"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"/>
-    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="To"
+        android:layout_weight="1"/>
+
+    <Spinner
+        android:id="@+id/toUnitSpinner"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"/>
 
 
-</FrameLayout>
+
+</LinearLayout>

@@ -1,18 +1,23 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.samsmlee.unitcalculator.Calculator.DisplayFragment">
+    android:layout_height="wrap_content"
+    tools:context="com.samsmlee.unitcalculator.Calculator.DisplayFragment"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:id="@+id/fromScreen"
-        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLength="12"
         android:gravity="left"
-        android:text="From" />
+        android:text="From"
+        android:textSize="@dimen/wordFrom_display_fontsize"/>
     <TextView
         android:id="@+id/toScreen"
-        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="right"
-        android:text="To" />
+        android:text="To"
+        android:textSize="@dimen/wordTo_display_fontsize"/>
 
-</FrameLayout>
+</LinearLayout>
