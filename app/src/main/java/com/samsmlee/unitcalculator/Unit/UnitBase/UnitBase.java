@@ -23,6 +23,8 @@ public enum UnitBase {
     OUNCE (UnitType.MASS),
     POUND (UnitType.MASS),
     GRAM (UnitType.MASS),
+    METRIC_TON (UnitType.MASS),
+    SHORT_TON (UnitType.MASS),
 
     // TEMPERATURE
     CELSIUS (UnitType.TEMPERATURE),

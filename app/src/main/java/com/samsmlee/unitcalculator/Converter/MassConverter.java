@@ -29,6 +29,10 @@ public class MassConverter {
                 return convertFromPound(toUnit, value);
             case GRAM:
                 return convertFromGram(toUnit, value);
+            case SHORT_TON:
+                return convertFromShortTon(toUnit, value);
+            case METRIC_TON:
+                return convertFromMetricTon(toUnit, value);
             default:
                 throw new UnsupportedOperationException("This unit base, " + fromUnit.getBase() + ", is not supported");
         }
@@ -44,6 +48,10 @@ public class MassConverter {
                 return value / 16;
             case GRAM:
                 return value / 16 * 453.592;
+            case SHORT_TON:
+                return value / 16 / 2000;
+            case METRIC_TON:
+                return value / 16 * 453.592 / 1000 / 1000;
             default:
                 throw new UnsupportedOperationException("This unit base, " + toUnit.getBase() + ", is not supported");
         }
@@ -59,6 +67,10 @@ public class MassConverter {
                 return value;
             case GRAM:
                 return value * 453.592;
+            case SHORT_TON:
+                return value / 2000;
+            case METRIC_TON:
+                return value * 453.592 / 1000 / 1000;
             default:
                 throw new UnsupportedOperationException("This unit base, " + toUnit.getBase() + ", is not supported");
         }
@@ -73,6 +85,48 @@ public class MassConverter {
             case POUND:
                 return value / 453.592;
             case GRAM:
+                return value;
+            case SHORT_TON:
+                return value / 453.592 / 2000;
+            case METRIC_TON:
+                return value / 1000 / 1000;
+            default:
+                throw new UnsupportedOperationException("This unit base, " + toUnit.getBase() + ", is not supported");
+        }
+    }
+
+    private static double convertFromShortTon(Unit toUnit, double value) {
+
+        switch (toUnit.getBase()) {
+
+            case OUNCE:
+                return value * 2000 * 16;
+            case POUND:
+                return value * 2000;
+            case GRAM:
+                return value * 2000 * 453.592;
+            case SHORT_TON:
+                return value;
+            case METRIC_TON:
+                return value * 2000 * 453.592 / 1000 / 1000;
+            default:
+                throw new UnsupportedOperationException("This unit base, " + toUnit.getBase() + ", is not supported");
+        }
+    }
+
+    private static double convertFromMetricTon(Unit toUnit, double value) {
+
+        switch (toUnit.getBase()) {
+
+            case OUNCE:
+                return value * 1000 * 1000 / 453.592 * 16;
+            case POUND:
+                return value * 1000 * 1000 / 453.592;
+            case GRAM:
+                return value * 1000 * 1000;
+            case SHORT_TON:
+                return value * 1000 * 1000 / 453.592 / 2000;
+            case METRIC_TON:
                 return value;
             default:
                 throw new UnsupportedOperationException("This unit base, " + toUnit.getBase() + ", is not supported");
