@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import com.samsmlee.unitcalculator.R;
+import com.samsmlee.unitcalculator.Unit.SimpleUnit;
 import com.samsmlee.unitcalculator.Unit.Unit;
 import com.samsmlee.unitcalculator.Unit.UnitType.UnitType;
 import com.samsmlee.unitcalculator.UnitTypeActivity;
@@ -101,8 +102,8 @@ public class CalculatorActivity extends ActionBarActivity {
                 case '=':
                     Spinner fromUnitSpinner = (Spinner) findViewById(R.id.fromUnitSpinner);
                     Spinner toUnitSpinner = (Spinner) findViewById(R.id.toUnitSpinner);
-                    Unit fromUnit = ((Unit.SimpleUnits) fromUnitSpinner.getSelectedItem()).getUnit();
-                    Unit toUnit = ((Unit.SimpleUnits) toUnitSpinner.getSelectedItem()).getUnit();
+                    Unit fromUnit = ((SimpleUnit) fromUnitSpinner.getSelectedItem()).getUnit();
+                    Unit toUnit = ((SimpleUnit) toUnitSpinner.getSelectedItem()).getUnit();
                     updater.runConvert(fromUnit, toUnit);
                     break;
                 default:

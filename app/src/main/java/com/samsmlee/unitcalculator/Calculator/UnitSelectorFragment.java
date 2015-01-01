@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.samsmlee.unitcalculator.R;
-import com.samsmlee.unitcalculator.Unit.Unit;
+import com.samsmlee.unitcalculator.Unit.SimpleUnit;
 import com.samsmlee.unitcalculator.Unit.UnitType.UnitType;
 
 /**
@@ -47,26 +47,26 @@ public class UnitSelectorFragment extends Fragment {
         }
         Spinner fromUnitSpinner = (Spinner) view.findViewById(R.id.fromUnitSpinner);
         Spinner toUnitSpinner = (Spinner) view.findViewById(R.id.toUnitSpinner);
-        ArrayAdapter<Unit.SimpleUnits> unitAdapter;
+        ArrayAdapter<SimpleUnit> unitAdapter;
         switch (type) {
 
             case LENGTH:
                unitAdapter
-                        = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Unit.SimpleUnits.values());
+                        = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, SimpleUnit.values());
 
                 break;
             case MASS:
                 unitAdapter
-                        = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Unit.SimpleUnits.values());
+                        = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, SimpleUnit.values());
 
                 break;
             case TEMPERATURE:
                 unitAdapter
-                        = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Unit.SimpleUnits.values());
+                        = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, SimpleUnit.values());
                 break;
             case VOLUME:
                 unitAdapter
-                        = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Unit.SimpleUnits.values());
+                        = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, SimpleUnit.values());
                 break;
             default:
                 // This case should not happen unless UnitType enum has changed
