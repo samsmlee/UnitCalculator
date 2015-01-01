@@ -92,6 +92,7 @@ public class Unit{
     public enum SimpleUnits {
         METER(UnitBase.METER, UnitFactor.ONE, UnitType.LENGTH),
         CENTIMETER(UnitBase.METER, UnitFactor.CENTI, UnitType.LENGTH),
+        KILOMETER(UnitBase.METER, UnitFactor.KILO, UnitType.LENGTH),
         MILLIMETER(UnitBase.METER, UnitFactor.MILLI, UnitType.LENGTH),
         INCH(UnitBase.INCH, UnitFactor.ONE, UnitType.LENGTH),
         FOOT(UnitBase.FOOT, UnitFactor.ONE, UnitType.LENGTH),
