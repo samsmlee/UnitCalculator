@@ -45,7 +45,6 @@ public class UnitSelectorFragment extends Fragment {
         if (type == null) {
             throw new IllegalArgumentException("Specify a type");
         }
-        int arrayRes;
         Spinner fromUnitSpinner = (Spinner) view.findViewById(R.id.fromUnitSpinner);
         Spinner toUnitSpinner = (Spinner) view.findViewById(R.id.toUnitSpinner);
         ArrayAdapter<Unit.SimpleUnits> unitAdapter;
@@ -53,21 +52,21 @@ public class UnitSelectorFragment extends Fragment {
 
             case LENGTH:
                unitAdapter
-                        = new ArrayAdapter<Unit.SimpleUnits>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Unit.SimpleUnits.values());
+                        = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Unit.SimpleUnits.values());
 
                 break;
             case MASS:
                 unitAdapter
-                        = new ArrayAdapter<Unit.SimpleUnits>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Unit.SimpleUnits.values());
+                        = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Unit.SimpleUnits.values());
 
                 break;
             case TEMPERATURE:
                 unitAdapter
-                        = new ArrayAdapter<Unit.SimpleUnits>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Unit.SimpleUnits.values());
+                        = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Unit.SimpleUnits.values());
                 break;
             case VOLUME:
                 unitAdapter
-                        = new ArrayAdapter<Unit.SimpleUnits>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Unit.SimpleUnits.values());
+                        = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Unit.SimpleUnits.values());
                 break;
             default:
                 // This case should not happen unless UnitType enum has changed
