@@ -8,5 +8,7 @@
     <string name="UnitType_Name_MASS">Mass</string>
     <string name="UnitType_Name_TEMPERATURE">Temperature</string>
     <string name="UnitType_Name_VOLUME">Volume</string>
+    <string name="numpad_DEL">DEL</string>
+    <string name="numpad_CLR">CLR</string>
 
 </resources>

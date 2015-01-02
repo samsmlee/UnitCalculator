@@ -7,5 +7,5 @@
     <dimen name="wordFrom_display_fontsize">52sp</dimen>
     <dimen name="wordTo_display_fontsize">52sp</dimen>
     <dimen name="unitselector_spinner_height">64dp</dimen>
-    <dimen name="numpad_key_fontsize">42sp</dimen>
+    <dimen name="numpad_key_fontsize">32sp</dimen>
 </resources>
