@@ -26,65 +26,70 @@ public class DisplayUpdater {
         aboutToReset = false;
     }
 
-    public void enterKey(Key key) {
-
-        // The display is still showing "0" (the default number)
-        if (currDisplay.length() == 1 && currDisplay.charAt(0) == '0') {
-            switch (key) {
-                case ONE:
-                case TWO:
-                case THREE:
-                case FOUR:
-                case FIVE:
-                case SIX:
-                case SEVEN:
-                case EIGHT:
-                case NINE:
-                    if (aboutToReset)
-                        reset();
-                    currDisplay.replace(0, key.toString().length(), key.toString());
-                    display.updateFromUnit(currDisplay.toString());
-                    break;
-                case DOT:
-                    if (aboutToReset)
-                        reset();
-                    currDisplay.append(key);
-                    hasDecimalPoint = true;
-                    display.updateFromUnit(currDisplay.toString());
-                    break;
-            }
-        } else {
-            switch (key) {
-                case ZERO:
-                case ONE:
-                case TWO:
-                case THREE:
-                case FOUR:
-                case FIVE:
-                case SIX:
-                case SEVEN:
-                case EIGHT:
-                case NINE:
-                    if (aboutToReset) {
-                        reset();
-                        currDisplay.replace(0, key.toString().length(), key.toString());
-                    } else {
-                        currDisplay.append(key);
-                    }
-                    display.updateFromUnit(currDisplay.toString());
-                    break;
-                case DOT:
-                    if (!hasDecimalPoint || aboutToReset) {
-
-                        if (aboutToReset)
-                            reset();
-                        currDisplay.append(key);
-                        hasDecimalPoint = true;
-                        display.updateFromUnit(currDisplay.toString());
-                    }
-                    break;
-            }
+    public void enterNumber(Key key) {
+        if (key == null) {
+            throw new IllegalArgumentException("Specify a key");
         }
+
+        switch (key) {
+            case ZERO:
+                // If "0" is displaying, pressing zero does nothing
+                if (currDisplay.toString().equals("0")) {
+                    return;
+                }
+            case ONE:
+            case TWO:
+            case THREE:
+            case FOUR:
+            case FIVE:
+            case SIX:
+            case SEVEN:
+            case EIGHT:
+            case NINE:
+                if (aboutToReset)
+                    reset();
+                if (currDisplay.toString().equals("0")) {
+                    currDisplay.replace(0, key.toString().length(), key.toString());
+                } else {
+                    currDisplay.append(key);
+                }
+                display.updateFromUnit(currDisplay.toString());
+                break;
+            default:
+                throw new IllegalArgumentException("Enter a number key");
+        }
+
+    }
+
+    public void enterDot() {
+        if (!hasDecimalPoint || aboutToReset) {
+            if (aboutToReset)
+                reset();
+            currDisplay.append(Key.DOT);
+            hasDecimalPoint = true;
+            display.updateFromUnit(currDisplay.toString());
+        }
+    }
+
+    public void negate() {
+
+        if (aboutToReset) {
+            aboutToReset = false;
+        }
+        // Don't negate if currDisplay is "0"
+        if (currDisplay.toString().equals("0")) {
+            return;
+        }
+
+        if (currDisplay.charAt(0) == '-') {
+            // if already negative, then turn to positive
+            currDisplay.deleteCharAt(0);
+        } else {
+            // if positive, then turn to positive
+            currDisplay.insert(0, '-');
+        }
+
+        display.updateFromUnit(currDisplay.toString());
 
     }
 
@@ -103,10 +108,46 @@ public class DisplayUpdater {
         display.updateToUnit(converted);
     }
 
+    public void clear() {
+        reset();
+        display.updateFromUnit(currDisplay.toString());
+        display.updateToUnit("");
+    }
+
+    public void delete() {
+        aboutToReset = false;
+
+        // nothing more to delete, if "0"
+        if (currDisplay.toString().equals("0")) {
+            return;
+        }
+
+        // if the char to delete is a dot, then set hasDecimalPoint to false
+        if (currDisplay.charAt(currDisplay.length() - 1) == '.') {
+            hasDecimalPoint = false;
+        }
+        if (currDisplay.length() == 1) {
+            reset();
+        } else if (currDisplay.toString().equals("-0.")) {
+            reset();
+        } else if (currDisplay.charAt(0) == '-') {
+            if (currDisplay.length() == 2) {
+                reset();
+            } else {
+                currDisplay.deleteCharAt(currDisplay.length() - 1);
+            }
+        } else {
+            currDisplay.deleteCharAt(currDisplay.length() - 1);
+        }
+
+
+        display.updateFromUnit(currDisplay.toString());
+
+    }
+
     protected void reset() {
         currDisplay = new StringBuilder("0");
         hasDecimalPoint = false;
         aboutToReset = false;
     }
-
 }

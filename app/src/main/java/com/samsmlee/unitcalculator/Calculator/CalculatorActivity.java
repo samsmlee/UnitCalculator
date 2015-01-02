@@ -80,39 +80,50 @@ public class CalculatorActivity extends ActionBarActivity {
         if (key_str.isEmpty()) {
             throw new UnsupportedOperationException("The key needs to have a value");
         }
-
-        if (key_str.length() == 1) {
+        try {
             key = Key.toKey(this, key_str);
 
-            switch (key) {
-                case ZERO:
-                case ONE:
-                case TWO:
-                case THREE:
-                case FOUR:
-                case FIVE:
-                case SIX:
-                case SEVEN:
-                case EIGHT:
-                case NINE:
-                case DOT:
-                    updater.enterKey(key);
-                    break;
-                case EQUAL:
-                    Spinner fromUnitSpinner = (Spinner) findViewById(R.id.fromUnitSpinner);
-                    Spinner toUnitSpinner = (Spinner) findViewById(R.id.toUnitSpinner);
-                    Unit fromUnit = ((SimpleUnit) fromUnitSpinner.getSelectedItem()).getUnit();
-                    Unit toUnit = ((SimpleUnit) toUnitSpinner.getSelectedItem()).getUnit();
-                    updater.runConvert(fromUnit, toUnit);
-                    break;
-                default:
-                    throw new UnsupportedOperationException("Invalid key");
-            }
-
-
-        } else {
+        } catch (IllegalArgumentException e) {
             throw new UnsupportedOperationException("Invalid key");
         }
+
+        switch (key) {
+            case ZERO:
+            case ONE:
+            case TWO:
+            case THREE:
+            case FOUR:
+            case FIVE:
+            case SIX:
+            case SEVEN:
+            case EIGHT:
+            case NINE:
+                updater.enterNumber(key);
+                break;
+            case DOT:
+                updater.enterDot();
+                break;
+            case SIGN:
+                updater.negate();
+                break;
+            case EQUAL:
+                Spinner fromUnitSpinner = (Spinner) findViewById(R.id.fromUnitSpinner);
+                Spinner toUnitSpinner = (Spinner) findViewById(R.id.toUnitSpinner);
+                Unit fromUnit = ((SimpleUnit) fromUnitSpinner.getSelectedItem()).getUnit();
+                Unit toUnit = ((SimpleUnit) toUnitSpinner.getSelectedItem()).getUnit();
+                updater.runConvert(fromUnit, toUnit);
+                break;
+            case DELETE:
+                updater.delete();
+                break;
+            case CLEAR:
+                updater.clear();
+                break;
+            default:
+                throw new UnsupportedOperationException("Invalid key");
+        }
+
+
 
 
 

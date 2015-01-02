@@ -20,7 +20,10 @@ public enum Key {
     EIGHT ("8"),
     NINE ("9"),
     DOT ("."),
-    EQUAL ("=");
+    EQUAL ("="),
+    SIGN ("+/-"),
+    DELETE("DEL"),
+    CLEAR ("CLR");
 
     protected String display;
     Key(String display) {
