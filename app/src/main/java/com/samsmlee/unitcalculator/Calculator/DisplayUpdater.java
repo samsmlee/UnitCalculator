@@ -26,59 +26,59 @@ public class DisplayUpdater {
         aboutToReset = false;
     }
 
-    public void enterKey(char key_char) {
+    public void enterKey(Key key) {
 
         // The display is still showing "0" (the default number)
         if (currDisplay.length() == 1 && currDisplay.charAt(0) == '0') {
-            switch (key_char) {
-                case '1':
-                case '2':
-                case '3':
-                case '4':
-                case '5':
-                case '6':
-                case '7':
-                case '8':
-                case '9':
+            switch (key) {
+                case ONE:
+                case TWO:
+                case THREE:
+                case FOUR:
+                case FIVE:
+                case SIX:
+                case SEVEN:
+                case EIGHT:
+                case NINE:
                     if (aboutToReset)
                         reset();
-                    currDisplay.setCharAt(0, key_char);
+                    currDisplay.replace(0, key.toString().length(), key.toString());
                     display.updateFromUnit(currDisplay.toString());
                     break;
-                case '.':
+                case DOT:
                     if (aboutToReset)
                         reset();
-                    currDisplay.append(key_char);
+                    currDisplay.append(key);
                     hasDecimalPoint = true;
                     display.updateFromUnit(currDisplay.toString());
                     break;
             }
         } else {
-            switch (key_char) {
-                case '0':
-                case '1':
-                case '2':
-                case '3':
-                case '4':
-                case '5':
-                case '6':
-                case '7':
-                case '8':
-                case '9':
+            switch (key) {
+                case ZERO:
+                case ONE:
+                case TWO:
+                case THREE:
+                case FOUR:
+                case FIVE:
+                case SIX:
+                case SEVEN:
+                case EIGHT:
+                case NINE:
                     if (aboutToReset) {
                         reset();
-                        currDisplay.setCharAt(0, key_char);
+                        currDisplay.replace(0, key.toString().length(), key.toString());
                     } else {
-                        currDisplay.append(key_char);
+                        currDisplay.append(key);
                     }
                     display.updateFromUnit(currDisplay.toString());
                     break;
-                case '.':
+                case DOT:
                     if (!hasDecimalPoint || aboutToReset) {
 
                         if (aboutToReset)
                             reset();
-                        currDisplay.append(key_char);
+                        currDisplay.append(key);
                         hasDecimalPoint = true;
                         display.updateFromUnit(currDisplay.toString());
                     }

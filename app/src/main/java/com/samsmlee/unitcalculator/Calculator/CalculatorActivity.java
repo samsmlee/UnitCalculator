@@ -69,37 +69,36 @@ public class CalculatorActivity extends ActionBarActivity {
         if (view == null) {
             throw new IllegalArgumentException("View is null");
         }
-        String key;
-        double result;
-        char key_char;
+        String key_str;
+        Key key;
         try {
-            key = (String) ((Button) view).getText();
+            key_str = (String) ((Button) view).getText();
         } catch (ClassCastException e) {
             throw new ClassCastException("You need to be a Button call this handler");
         }
 
-        if (key.isEmpty()) {
+        if (key_str.isEmpty()) {
             throw new UnsupportedOperationException("The key needs to have a value");
         }
 
-        if (key.length() == 1) {
-            key_char = key.charAt(0);
+        if (key_str.length() == 1) {
+            key = Key.toKey(this, key_str);
 
-            switch (key_char) {
-                case '0':
-                case '1':
-                case '2':
-                case '3':
-                case '4':
-                case '5':
-                case '6':
-                case '7':
-                case '8':
-                case '9':
-                case '.':
-                    updater.enterKey(key_char);
+            switch (key) {
+                case ZERO:
+                case ONE:
+                case TWO:
+                case THREE:
+                case FOUR:
+                case FIVE:
+                case SIX:
+                case SEVEN:
+                case EIGHT:
+                case NINE:
+                case DOT:
+                    updater.enterKey(key);
                     break;
-                case '=':
+                case EQUAL:
                     Spinner fromUnitSpinner = (Spinner) findViewById(R.id.fromUnitSpinner);
                     Spinner toUnitSpinner = (Spinner) findViewById(R.id.toUnitSpinner);
                     Unit fromUnit = ((SimpleUnit) fromUnitSpinner.getSelectedItem()).getUnit();
