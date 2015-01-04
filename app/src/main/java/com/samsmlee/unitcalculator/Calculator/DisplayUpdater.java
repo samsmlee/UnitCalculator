@@ -20,6 +20,8 @@ public class DisplayUpdater {
 
     protected final int maxlength;
 
+    public static int MAX_PRECISION = 8;
+
     public DisplayUpdater(DisplayUpdateListener display) {
         if (display == null) {
             throw new IllegalArgumentException("DisplayUpdateListener is required");
@@ -112,7 +114,8 @@ public class DisplayUpdater {
             throw new IllegalArgumentException("Specify the units");
         }
 
-        Number fromNumber = new Number(fromUnit, currDisplay.toString());
+        BigDecimal original = new BigDecimal(currDisplay.toString().trim()).stripTrailingZeros();
+        Number fromNumber = new Number(fromUnit, original);
         Number toNumber = fromNumber.convert(toUnit);
 
         BigDecimal ans = toNumber.getValue();
@@ -121,11 +124,25 @@ public class DisplayUpdater {
             ans = BigDecimal.ZERO;
         }
 
-        String converted = String.valueOf(ans);
+        String converted = getStringValue(ans);
         aboutToReset = true;
 
         display.updateFromUnit(currDisplay.toString());
         display.updateToUnit(converted);
+    }
+
+    // This method decides which format of String to use
+    private String getStringValue(BigDecimal n) {
+
+        if (n == null) {
+            throw new NullPointerException("Cannot be null");
+        }
+        n = n.stripTrailingZeros();
+
+        if (n.scale() < 0 && n.precision() + (-1 * n.scale()) <= MAX_PRECISION) {
+            return n.toPlainString();
+        }
+        return String.valueOf(n);
     }
 
     public void clear() {

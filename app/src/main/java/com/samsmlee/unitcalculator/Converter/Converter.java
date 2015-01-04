@@ -1,5 +1,8 @@
 package com.samsmlee.unitcalculator.Converter;
 
+
+import com.samsmlee.unitcalculator.Calculator.DisplayUpdater;
+
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
@@ -10,7 +13,6 @@ import java.math.RoundingMode;
  */
 public class Converter {
 
-    private static int MAX_PRECISION = 8;
 
     public static BigDecimal add(BigDecimal n1, String n2) {
 
@@ -66,7 +68,7 @@ public class Converter {
         if (n1 == null || n2 == null) {
             throw new NullPointerException("Cannot divide a null value");
         }
-        MathContext mc = new MathContext(MAX_PRECISION, RoundingMode.HALF_UP);
+        MathContext mc = new MathContext(DisplayUpdater.MAX_PRECISION, RoundingMode.HALF_UP);
         return n1.divide(new BigDecimal(n2), mc);
     }
 
@@ -76,7 +78,7 @@ public class Converter {
             throw new NullPointerException("Cannot divide a null value");
         }
 
-        MathContext mc = new MathContext(MAX_PRECISION, RoundingMode.HALF_UP);
+        MathContext mc = new MathContext(DisplayUpdater.MAX_PRECISION, RoundingMode.HALF_UP);
         return (new BigDecimal(n1)).divide(n2, mc);
     }
 
