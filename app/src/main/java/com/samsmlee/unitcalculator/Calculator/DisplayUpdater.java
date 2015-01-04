@@ -3,6 +3,8 @@ package com.samsmlee.unitcalculator.Calculator;
 import com.samsmlee.unitcalculator.Unit.Unit;
 import com.samsmlee.unitcalculator.Number.Number;
 
+import java.math.BigDecimal;
+
 /**
  * Created by Sam on 12/29/2014.
  */
@@ -112,7 +114,14 @@ public class DisplayUpdater {
 
         Number fromNumber = new Number(fromUnit, currDisplay.toString());
         Number toNumber = fromNumber.convert(toUnit);
-        String converted = String.valueOf(toNumber.getValue());
+
+        BigDecimal ans = toNumber.getValue();
+
+        if (ans.compareTo(BigDecimal.ZERO) == 0) {
+            ans = BigDecimal.ZERO;
+        }
+
+        String converted = String.valueOf(ans);
         aboutToReset = true;
 
         display.updateFromUnit(currDisplay.toString());
