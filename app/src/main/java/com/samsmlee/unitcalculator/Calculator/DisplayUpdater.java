@@ -115,6 +115,7 @@ public class DisplayUpdater {
         String converted = String.valueOf(toNumber.getValue());
         aboutToReset = true;
 
+        display.updateFromUnit(currDisplay.toString());
         display.updateToUnit(converted);
     }
 
