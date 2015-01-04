@@ -98,9 +98,7 @@ public class DisplayUpdater {
             throw new IllegalArgumentException("Specify the units");
         }
 
-        Double currNumber = Double.parseDouble(currDisplay.toString());
-
-        Number fromNumber = new Number(fromUnit, currNumber);
+        Number fromNumber = new Number(fromUnit, currDisplay.toString());
         Number toNumber = fromNumber.convert(toUnit);
         String converted = String.valueOf(toNumber.getValue());
         aboutToReset = true;

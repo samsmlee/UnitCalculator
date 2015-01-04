@@ -3,12 +3,14 @@ package com.samsmlee.unitcalculator.Converter;
 import com.samsmlee.unitcalculator.Unit.Unit;
 import com.samsmlee.unitcalculator.Unit.UnitType.UnitType;
 
+import java.math.BigDecimal;
+
 /**
  * Created by Sam on 12/24/2014.
  */
 public class MassConverter {
 
-    public static double convert(Unit fromUnit, Unit toUnit, double value) {
+    public static BigDecimal convert(Unit fromUnit, Unit toUnit, BigDecimal value) {
         if (fromUnit == null || toUnit == null) {
             throw new IllegalArgumentException("Null unit is not allowed");
         }
@@ -38,94 +40,138 @@ public class MassConverter {
         }
     }
 
-    private static double convertFromOunce(Unit toUnit, double value) {
-
+    private static BigDecimal convertFromOunce(Unit toUnit, BigDecimal value) {
+        BigDecimal ans;
         switch (toUnit.getBase()) {
 
             case OUNCE:
                 return value;
             case POUND:
-                return value / 16;
+                ans = Converter.divide(value, "16");
+                return ans;
             case GRAM:
-                return value / 16 * 453.592;
+                ans = Converter.divide(value, "16");
+                ans = Converter.multiply(ans, "453.592");
+                return ans;
             case SHORT_TON:
-                return value / 16 / 2000;
+                ans = Converter.divide(value, "16");
+                ans = Converter.divide(ans, "2000");
+                return ans;
             case METRIC_TON:
-                return value / 16 * 453.592 / 1000 / 1000;
+                ans = Converter.divide(value, "16");
+                ans = Converter.divide(ans, "453.592");
+                ans = Converter.divide(ans, "1000");
+                ans = Converter.divide(ans, "1000");
+                return ans;
             default:
                 throw new UnsupportedOperationException("This unit base, " + toUnit.getBase() + ", is not supported");
         }
     }
 
-    private static double convertFromPound(Unit toUnit, double value) {
-
+    private static BigDecimal convertFromPound(Unit toUnit, BigDecimal value) {
+        BigDecimal ans;
         switch (toUnit.getBase()) {
 
             case OUNCE:
-                return value * 16;
+                ans = Converter.multiply(value, "16");
+                return ans;
             case POUND:
                 return value;
             case GRAM:
-                return value * 453.592;
+                ans = Converter.multiply(value, "453.592");
+                return ans;
             case SHORT_TON:
-                return value / 2000;
+                ans = Converter.divide(value, "2000");
+                return ans;
             case METRIC_TON:
-                return value * 453.592 / 1000 / 1000;
+                ans = Converter.multiply(value, "453.592");
+                ans = Converter.divide(ans, "1000");
+                ans = Converter.divide(ans, "1000");
+                return ans;
             default:
                 throw new UnsupportedOperationException("This unit base, " + toUnit.getBase() + ", is not supported");
         }
     }
 
-    private static double convertFromGram(Unit toUnit, double value) {
-
+    private static BigDecimal convertFromGram(Unit toUnit, BigDecimal value) {
+        BigDecimal ans;
         switch (toUnit.getBase()) {
 
             case OUNCE:
-                return value / 453.592 * 16;
+                ans = Converter.divide(value, "453.592");
+                ans = Converter.multiply(ans, "16");
+                return ans;
             case POUND:
-                return value / 453.592;
+                ans = Converter.divide(value, "453.592");
+                return ans;
             case GRAM:
                 return value;
             case SHORT_TON:
-                return value / 453.592 / 2000;
+                ans = Converter.divide(value, "453.592");
+                ans = Converter.divide(ans, "2000");
+                return ans;
             case METRIC_TON:
-                return value / 1000 / 1000;
+                ans = Converter.divide(value, "1000");
+                ans = Converter.divide(ans, "1000");
+                return ans;
             default:
                 throw new UnsupportedOperationException("This unit base, " + toUnit.getBase() + ", is not supported");
         }
     }
 
-    private static double convertFromShortTon(Unit toUnit, double value) {
-
+    private static BigDecimal convertFromShortTon(Unit toUnit, BigDecimal value) {
+        BigDecimal ans;
         switch (toUnit.getBase()) {
 
             case OUNCE:
-                return value * 2000 * 16;
+                ans = Converter.multiply(value, "2000");
+                ans = Converter.multiply(ans, "16");
+                return ans;
             case POUND:
-                return value * 2000;
+                ans = Converter.multiply(value, "2000");
+                return ans;
             case GRAM:
-                return value * 2000 * 453.592;
+                ans = Converter.multiply(value, "2000");
+                ans = Converter.multiply(ans, "453.592");
+                return ans;
             case SHORT_TON:
                 return value;
             case METRIC_TON:
-                return value * 2000 * 453.592 / 1000 / 1000;
+                ans = Converter.multiply(value, "2000");
+                ans = Converter.multiply(ans, "453.592");
+                ans = Converter.divide(ans, "1000");
+                ans = Converter.divide(ans, "1000");
+                return ans;
             default:
                 throw new UnsupportedOperationException("This unit base, " + toUnit.getBase() + ", is not supported");
         }
     }
 
-    private static double convertFromMetricTon(Unit toUnit, double value) {
-
+    private static BigDecimal convertFromMetricTon(Unit toUnit, BigDecimal value) {
+        BigDecimal ans;
         switch (toUnit.getBase()) {
 
             case OUNCE:
-                return value * 1000 * 1000 / 453.592 * 16;
+                ans = Converter.multiply(value, "1000");
+                ans = Converter.multiply(ans, "1000");
+                ans = Converter.divide(ans, "453.592");
+                ans = Converter.multiply(ans, "16");
+                return ans;
             case POUND:
-                return value * 1000 * 1000 / 453.592;
+                ans = Converter.multiply(value, "1000");
+                ans = Converter.multiply(ans, "1000");
+                ans = Converter.divide(ans, "453.592");
+                return ans;
             case GRAM:
-                return value * 1000 * 1000;
+                ans = Converter.multiply(value, "1000");
+                ans = Converter.multiply(ans, "1000");
+                return ans;
             case SHORT_TON:
-                return value * 1000 * 1000 / 453.592 / 2000;
+                ans = Converter.multiply(value, "1000");
+                ans = Converter.multiply(ans, "1000");
+                ans = Converter.divide(ans, "453.592");
+                ans = Converter.divide(ans, "2000");
+                return ans;
             case METRIC_TON:
                 return value;
             default:

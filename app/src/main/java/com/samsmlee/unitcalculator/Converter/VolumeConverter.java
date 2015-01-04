@@ -3,11 +3,13 @@ package com.samsmlee.unitcalculator.Converter;
 import com.samsmlee.unitcalculator.Unit.Unit;
 import com.samsmlee.unitcalculator.Unit.UnitType.UnitType;
 
+import java.math.BigDecimal;
+
 /**
  * Created by Sam on 12/24/2014.
  */
 public class VolumeConverter {
-    public static double convert(Unit fromUnit, Unit toUnit, double value) {
+    public static BigDecimal convert(Unit fromUnit, Unit toUnit, BigDecimal value) {
 
         if (fromUnit == null || toUnit == null) {
             throw new IllegalArgumentException("Null unit is not allowed");
@@ -40,113 +42,185 @@ public class VolumeConverter {
         }
     }
 
-    private static double convertFromCubicMeter(Unit toUnit, double value) {
+    private static BigDecimal convertFromCubicMeter(Unit toUnit, BigDecimal value) {
+        BigDecimal ans;
         switch (toUnit.getBase()) {
             case CUBIC_METER:
                 return value;
             case LITER:
-                return value * 1000;
+                ans = Converter.multiply(value, "1000");
+                return ans;
             case FLUID_OUNCE:
-                return value * 33814;
+                ans = Converter.multiply(value, "33814");
+                return ans;
             case PINT:
-                return value * 33814 / 16;
+                ans = Converter.multiply(value, "33814");
+                ans = Converter.divide(ans, "16");
+                return ans;
             case QUART:
-                return value * 33814 / 16 / 2;
+                ans = Converter.multiply(value, "33814");
+                ans = Converter.divide(ans, "16");
+                ans = Converter.divide(ans, "2");
+                return ans;
             case GALLON:
-                return value * 33814 / 16 / 2 / 4;
+                ans = Converter.multiply(value, "33814");
+                ans = Converter.divide(ans, "16");
+                ans = Converter.divide(ans, "2");
+                ans = Converter.divide(ans, "4");
+                return ans;
             default:
                 throw new UnsupportedOperationException("This unit base, " + toUnit.getBase() + ", is not supported");
         }
     }
 
-    private static double convertFromLiter(Unit toUnit, double value) {
+    private static BigDecimal convertFromLiter(Unit toUnit, BigDecimal value) {
+        BigDecimal ans;
         switch (toUnit.getBase()) {
             case CUBIC_METER:
-                return value / 1000;
+                ans = Converter.divide(value, "1000");
+                return ans;
             case LITER:
                 return value;
             case FLUID_OUNCE:
-                return value * 33.814;
+                ans = Converter.multiply(value, "33.814");
+                return ans;
             case PINT:
-                return value * 33.814 / 16;
+                ans = Converter.multiply(value, "33.814");
+                ans = Converter.divide(ans, "16");
+                return ans;
             case QUART:
-                return value * 33.814 / 16 / 2;
+                ans = Converter.multiply(value, "33.814");
+                ans = Converter.divide(ans, "16");
+                ans = Converter.divide(ans, "2");
+                return ans;
             case GALLON:
-                return value * 33.814 / 16 / 2 / 4;
+                ans = Converter.multiply(value, "33.814");
+                ans = Converter.divide(ans, "16");
+                ans = Converter.divide(ans, "2");
+                ans = Converter.divide(ans, "4");
+                return ans;
             default:
                 throw new UnsupportedOperationException("This unit base, " + toUnit.getBase() + ", is not supported");
         }
     }
 
-    private static double convertFromFluidOunce(Unit toUnit, double value) {
+    private static BigDecimal convertFromFluidOunce(Unit toUnit, BigDecimal value) {
+        BigDecimal ans;
         switch (toUnit.getBase()) {
             case CUBIC_METER:
-                return value / 33.814 / 1000;
+                ans = Converter.divide(value, "33.814");
+                ans = Converter.divide(ans, "1000");
+                return ans;
             case LITER:
-                return value / 33.814;
+                ans = Converter.divide(value, "33.814");
+                return ans;
             case FLUID_OUNCE:
                 return value;
             case PINT:
-                return value / 16;
+                ans = Converter.divide(value, "16");
+                return ans;
             case QUART:
-                return value / 16 / 2;
+                ans = Converter.divide(value, "16");
+                ans = Converter.divide(ans, "2");
+                return ans;
             case GALLON:
-                return value / 16 / 2 / 4;
+                ans = Converter.divide(value, "16");
+                ans = Converter.divide(ans, "2");
+                ans = Converter.divide(ans, "4");
+                return ans;
             default:
                 throw new UnsupportedOperationException("This unit base, " + toUnit.getBase() + ", is not supported");
         }
     }
 
-    private static double convertFromPint(Unit toUnit, double value) {
+    private static BigDecimal convertFromPint(Unit toUnit, BigDecimal value) {
+        BigDecimal ans;
         switch (toUnit.getBase()) {
             case CUBIC_METER:
-                return value * 16 / 33.814 / 1000;
+                ans = Converter.multiply(value, "16");
+                ans = Converter.divide(ans, "33.814");
+                ans = Converter.divide(ans, "1000");
+                return ans;
             case LITER:
-                return value * 16 / 33.814;
+                ans = Converter.multiply(value, "16");
+                ans = Converter.divide(ans, "33.814");
+                return ans;
             case FLUID_OUNCE:
-                return value * 16;
+                ans = Converter.multiply(value, "16");
+                return ans;
             case PINT:
                 return value;
             case QUART:
-                return value / 2;
+                ans = Converter.divide(value, "2");
+                return ans;
             case GALLON:
-                return value / 2 / 4;
+                ans = Converter.divide(value, "2");
+                ans = Converter.divide(value, "4");
+                return ans;
             default:
                 throw new UnsupportedOperationException("This unit base, " + toUnit.getBase() + ", is not supported");
         }
     }
 
-    private static double convertFromQuart(Unit toUnit, double value) {
+    private static BigDecimal convertFromQuart(Unit toUnit, BigDecimal value) {
+        BigDecimal ans;
         switch (toUnit.getBase()) {
             case CUBIC_METER:
-                return value * 2 * 16 / 33.814 / 1000;
+                ans = Converter.multiply(value, "2");
+                ans = Converter.multiply(ans, "16");
+                ans = Converter.divide(ans, "33.814");
+                ans = Converter.divide(ans, "1000");
+                return ans;
             case LITER:
-                return value * 2 * 16 / 33.814;
+                ans = Converter.multiply(value, "2");
+                ans = Converter.multiply(ans, "16");
+                ans = Converter.divide(ans, "33.814");
+                return ans;
             case FLUID_OUNCE:
-                return value * 2 * 16;
+                ans = Converter.multiply(value, "2");
+                ans = Converter.multiply(ans, "16");
+                return ans;
             case PINT:
-                return value * 2;
+                ans = Converter.multiply(value, "2");
+                return ans;
             case QUART:
                 return value;
             case GALLON:
-                return value / 4;
+                ans = Converter.divide(value, "4");
+                return ans;
             default:
                 throw new UnsupportedOperationException("This unit base, " + toUnit.getBase() + ", is not supported");
         }
     }
 
-    private static double convertFromGallon(Unit toUnit, double value) {
+    private static BigDecimal convertFromGallon(Unit toUnit, BigDecimal value) {
+        BigDecimal ans;
         switch (toUnit.getBase()) {
             case CUBIC_METER:
-                return value * 4 * 2 * 16 / 33.814 / 1000;
+                ans = Converter.multiply(value, "4");
+                ans = Converter.multiply(ans, "2");
+                ans = Converter.multiply(ans, "16");
+                ans = Converter.divide(ans, "33.814");
+                ans = Converter.divide(ans, "1000");
+                return ans;
             case LITER:
-                return value * 4 * 2 * 16 / 33.814;
+                ans = Converter.multiply(value, "4");
+                ans = Converter.multiply(ans, "2");
+                ans = Converter.multiply(ans, "16");
+                ans = Converter.divide(ans, "33.814");
+                return ans;
             case FLUID_OUNCE:
-                return value * 4 * 2 * 16;
+                ans = Converter.multiply(value, "4");
+                ans = Converter.multiply(ans, "2");
+                ans = Converter.multiply(ans, "16");
+                return ans;
             case PINT:
-                return value * 4 * 2;
+                ans = Converter.multiply(value, "4");
+                ans = Converter.multiply(ans, "2");
+                return ans;
             case QUART:
-                return value * 4;
+                ans = Converter.multiply(value, "4");
+                return ans;
             case GALLON:
                 return value;
             default:

@@ -7,6 +7,8 @@ import com.samsmlee.unitcalculator.Converter.VolumeConverter;
 import com.samsmlee.unitcalculator.Unit.UnitBase.UnitBase;
 import com.samsmlee.unitcalculator.Unit.UnitType.UnitType;
 
+import java.math.BigDecimal;
+
 /**
  * Created by Sam on 12/22/2014.
  */
@@ -51,7 +53,7 @@ public class Unit{
     }
 
 
-    public static double convert(Unit fromUnit, Unit toUnit, double value) {
+    public static BigDecimal convert(Unit fromUnit, Unit toUnit, BigDecimal value) {
 
         if (fromUnit == null) {
             throw new IllegalArgumentException("Cannot convert from a null unit");
@@ -63,7 +65,7 @@ public class Unit{
         if (!toUnit.equalType(fromUnit))
             throw new IllegalArgumentException("Incompatible type");
 
-        double convertedValue;
+        BigDecimal convertedValue;
         switch (fromUnit.getType()) {
 
             case LENGTH:

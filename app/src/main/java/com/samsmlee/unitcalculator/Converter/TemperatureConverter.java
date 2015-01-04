@@ -3,11 +3,13 @@ package com.samsmlee.unitcalculator.Converter;
 import com.samsmlee.unitcalculator.Unit.Unit;
 import com.samsmlee.unitcalculator.Unit.UnitType.UnitType;
 
+import java.math.BigDecimal;
+
 /**
  * Created by Sam on 12/24/2014.
  */
 public class TemperatureConverter {
-    public static double convert(Unit fromUnit, Unit toUnit, double value) {
+    public static BigDecimal convert(Unit fromUnit, Unit toUnit, BigDecimal value) {
         if (fromUnit == null || toUnit == null) {
             throw new IllegalArgumentException("Null unit is not allowed");
         }
@@ -33,46 +35,62 @@ public class TemperatureConverter {
         }
     }
 
-    private static double convertFromCelsius(Unit toUnit, double value) {
+    private static BigDecimal convertFromCelsius(Unit toUnit, BigDecimal value) {
 
-
+        BigDecimal ans;
         switch (toUnit.getBase()) {
 
             case CELSIUS:
                 return value;
             case FARHENHEIT:
-                return value * 9 / 5 + 32;
+                ans = Converter.multiply(value, "9");
+                ans = Converter.divide(ans, "5");
+                ans = Converter.add(ans, "32");
+                return ans;
             case KELVIN:
-                return value + 273.15;
+                ans = Converter.add(value, "273.15");
+                return ans;
             default:
                 throw new UnsupportedOperationException("This unit base, " + toUnit.getBase() + ", is not supported");
         }
     }
 
-    private static double convertFromFarhenheit(Unit toUnit, double value) {
+    private static BigDecimal convertFromFarhenheit(Unit toUnit, BigDecimal value) {
 
-
+        BigDecimal ans;
         switch (toUnit.getBase()) {
 
             case CELSIUS:
-                return (value - 32) * 5 / 9;
+                ans = Converter.subtract(value, "32");
+                ans = Converter.multiply(ans, "5");
+                ans = Converter.divide(ans, "9");
+                return ans;
             case FARHENHEIT:
                 return value;
             case KELVIN:
-                return (value - 32) * 5 / 9 + 273.15;
+                ans = Converter.subtract(value, "32");
+                ans = Converter.multiply(ans, "5");
+                ans = Converter.divide(ans, "9");
+                ans = Converter.add(ans, "273.15");
+                return ans;
             default:
                 throw new UnsupportedOperationException("This unit base, " + toUnit.getBase() + ", is not supported");
         }
     }
 
-    private static double convertFromKelvin(Unit toUnit, double value) {
-
+    private static BigDecimal convertFromKelvin(Unit toUnit, BigDecimal value) {
+        BigDecimal ans;
         switch (toUnit.getBase()) {
 
             case CELSIUS:
-                return  value - 273.15;
+                ans = Converter.subtract(value, "273.15");
+                return ans;
             case FARHENHEIT:
-                return (value - 273.15 - 32) * 5 / 9;
+                ans = Converter.subtract(value, "273.15");
+                ans = Converter.subtract(ans, "32");
+                ans = Converter.multiply(ans, "5");
+                ans = Converter.divide(ans, "9");
+                return ans;
             case KELVIN:
                 return value;
             default:

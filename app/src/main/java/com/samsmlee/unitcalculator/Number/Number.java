@@ -6,6 +6,7 @@ import com.samsmlee.unitcalculator.Unit.UnitBase.UnitBase;
 import com.samsmlee.unitcalculator.Unit.UnitFactor;
 import com.samsmlee.unitcalculator.Unit.UnitType.UnitType;
 
+import java.math.BigDecimal;
 
 /**
  * Created by Sam on 12/23/2014.
@@ -14,10 +15,10 @@ import com.samsmlee.unitcalculator.Unit.UnitType.UnitType;
 public class Number {
 
     protected Unit unit;
-    protected double value;
+    protected BigDecimal value;
     private final UnitType type;
 
-    public Number(Unit unit, double value) {
+    public Number(Unit unit, BigDecimal value) {
         if (unit == null)
             throw new IllegalArgumentException("Unit cannot be null");
         this.unit = unit;
@@ -25,8 +26,16 @@ public class Number {
         this.value = value;
     }
 
+    public Number(Unit unit, String value) {
+        if (unit == null)
+            throw new IllegalArgumentException("Unit cannot be null");
+        this.unit = unit;
+        this.type = unit.getType();
+        this.value = new BigDecimal(value);
+    }
 
-    public Number(UnitBase unitBase, UnitFactor unitFactor, double value) {
+
+    public Number(UnitBase unitBase, UnitFactor unitFactor, BigDecimal value) {
 
         if (unitBase == null || unitFactor == null )
             throw new IllegalArgumentException("Unit base or factor cannot be null");
@@ -37,7 +46,7 @@ public class Number {
         this.value = value;
     }
 
-    public Number(UnitBase unitBase, double value) {
+    public Number(UnitBase unitBase, BigDecimal value) {
 
         if (unitBase == null)
             throw new IllegalArgumentException("Unit base cannot be null");
@@ -59,11 +68,11 @@ public class Number {
         this.unit = newUnit;
     }
 
-    public double getValue() {
+    public BigDecimal getValue() {
         return value;
     }
 
-    public void setValue(double newValue) {
+    public void setValue(BigDecimal newValue) {
         this.value = newValue;
     }
 
@@ -72,7 +81,7 @@ public class Number {
         if (toUnit == null) {
             throw new IllegalArgumentException("Cannot convert to a null unit");
         }
-        double convertedValue = Unit.convert(this.unit, toUnit, this.value);
+        BigDecimal convertedValue = Unit.convert(this.unit, toUnit, this.value);
 
         return new Number(toUnit, convertedValue);
     }
@@ -86,7 +95,7 @@ public class Number {
 
         Unit toUnit = new Unit(toBase, UnitFactor.ONE);
 
-        double convertedValue = Unit.convert(this.unit, toUnit, this.value);
+        BigDecimal convertedValue = Unit.convert(this.unit, toUnit, this.value);
 
         return new Number(toUnit, convertedValue);
     }

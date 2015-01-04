@@ -1,5 +1,9 @@
 package com.samsmlee.unitcalculator.Unit;
 
+import com.samsmlee.unitcalculator.Converter.Converter;
+
+import java.math.BigDecimal;
+
 /**
  * Created by Sam on 12/23/2014.
  */
@@ -23,12 +27,15 @@ public enum UnitFactor {
         return factor;
     }
 
-    public static double convert(UnitFactor fromFactor, UnitFactor toFactor, double value) {
+    public static BigDecimal convert(UnitFactor fromFactor, UnitFactor toFactor, BigDecimal value) {
         if (fromFactor == null || toFactor == null) {
             throw new IllegalArgumentException("Null unit is not allowed");
         }
+        BigDecimal ans;
+        ans = Converter.multiply(value, (new Double(fromFactor.getFactor())).toString());
+        ans = Converter.divide(ans, (new Double(toFactor.getFactor())).toString());
 
-        return fromFactor.getFactor() / toFactor.getFactor() * value;
+        return ans;
     }
 
 

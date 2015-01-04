@@ -4,12 +4,14 @@ package com.samsmlee.unitcalculator.Converter;
 import com.samsmlee.unitcalculator.Unit.Unit;
 import com.samsmlee.unitcalculator.Unit.UnitType.UnitType;
 
+import java.math.BigDecimal;
+
 /**
  * Created by Sam on 12/23/2014.
  */
 public class LengthConverter {
 
-    public static double convert(Unit fromUnit, Unit toUnit, double value) {
+    public static BigDecimal convert(Unit fromUnit, Unit toUnit, BigDecimal value) {
         if (fromUnit == null || toUnit == null) {
             throw new IllegalArgumentException("Null unit is not allowed");
         }
@@ -40,98 +42,142 @@ public class LengthConverter {
     }
 
 
-    protected static double convertFromMeter(Unit toUnit, double value) {
+    protected static BigDecimal convertFromMeter(Unit toUnit, BigDecimal value) {
 
-
+        BigDecimal ans;
         switch (toUnit.getBase()) {
 
             case METER:
                 // as is since METER and METER are same units
                 return value;
             case INCH:
-                return value / 0.0254;
+                ans = Converter.divide(value, "0.0254");
+                return ans;
             case FOOT:
-                return value / 0.0254 / 12;
+                ans = Converter.divide(value, "0.0254");
+                ans = Converter.divide(ans, "12");
+                return ans;
             case YARD:
-                return value / 0.0254 / 12 / 3;
+                ans = Converter.divide(value, "0.0254");
+                ans = Converter.divide(ans, "12");
+                ans = Converter.divide(ans, "3");
+                return ans;
             case MILE:
-                return value / 0.0254 / 12 / 3 / 1760;
+                ans = Converter.divide(value, "0.0254");
+                ans = Converter.divide(ans, "12");
+                ans = Converter.divide(ans, "3");
+                ans = Converter.divide(ans, "1760");
+                return ans;
             default:
                 throw new UnsupportedOperationException("This unit base, " + toUnit.getBase() + ", is not supported");
         }
     }
 
-    protected static double convertFromInch(Unit toUnit, double value) {
+    protected static BigDecimal convertFromInch(Unit toUnit, BigDecimal value) {
 
+        BigDecimal ans;
         switch (toUnit.getBase()) {
 
             case METER:
-                return value  * 0.0254;
+                ans = Converter.multiply(value, "0.0254");
+                return ans;
             case INCH:
                 return value;
             case FOOT:
-                return value / 12;
+                ans = Converter.divide(value, "12");
+                return ans;
             case YARD:
-                return value / 12 / 3;
+                ans = Converter.divide(value, "12");
+                ans = Converter.divide(ans, "3");
+                return ans;
             case MILE:
-                return value / 12 / 3 / 1760;
+                ans = Converter.divide(value, "12");
+                ans = Converter.divide(ans, "3");
+                ans = Converter.divide(ans, "1760");
+                return ans;
             default:
                 throw new UnsupportedOperationException("This unit base, " + toUnit.getBase() + ", is not supported");
         }
     }
 
 
-    protected static double convertFromFoot(Unit toUnit, double value) {
+    protected static BigDecimal convertFromFoot(Unit toUnit, BigDecimal value) {
 
+        BigDecimal ans;
         switch (toUnit.getBase()) {
 
             case METER:
-                return value * 12 * 0.0254;
+                ans = Converter.multiply(value, "12");
+                ans = Converter.multiply(ans, "0.0254");
+                return ans;
             case INCH:
-                return value * 12;
+                ans = Converter.multiply(value, "12");
+                return ans;
             case FOOT:
                 return value;
             case YARD:
-                return value / 3;
+                ans = Converter.divide(value, "3");
+                return ans;
             case MILE:
-                return value / 3 / 1760;
+                ans = Converter.divide(value, "3");
+                ans = Converter.divide(ans, "1760");
+                return ans;
             default:
                 throw new UnsupportedOperationException("This unit base, " + toUnit.getBase() + ", is not supported");
         }
     }
 
-    protected static double convertFromYard(Unit toUnit, double value) {
+    protected static BigDecimal convertFromYard(Unit toUnit, BigDecimal value) {
 
+        BigDecimal ans;
         switch (toUnit.getBase()) {
 
             case METER:
-                return value * 3 * 12 * 0.0254;
+                ans = Converter.multiply(value, "3");
+                ans = Converter.multiply(ans, "12");
+                ans = Converter.multiply(ans, "0.0254");
+                return ans;
             case INCH:
-                return value * 3 * 12;
+                ans = Converter.multiply(value, "3");
+                ans = Converter.multiply(ans, "12");
+                return ans;
             case FOOT:
-                return value * 3;
+                ans = Converter.multiply(value, "3");
+                return ans;
             case YARD:
                 return value;
             case MILE:
-                return value / 1760;
+                ans = Converter.divide(value, "1760");
+                return ans;
             default:
                 throw new UnsupportedOperationException("This unit base, " + toUnit.getBase() + ", is not supported");
         }
     }
 
 
-    protected static double convertFromMile(Unit toUnit, double value) {
+    protected static BigDecimal convertFromMile(Unit toUnit, BigDecimal value) {
 
+        BigDecimal ans;
         switch (toUnit.getBase()) {
 
             case METER:
-                return value * 1760 * 3 * 12 * 0.0254;
+                ans = Converter.multiply(value, "1760");
+                ans = Converter.multiply(ans, "3");
+                ans = Converter.multiply(ans, "12");
+                ans = Converter.multiply(ans, "0.0254");
+                return ans;
             case INCH:
-                return value * 1760 * 3 * 12;
+                ans = Converter.multiply(value, "1760");
+                ans = Converter.multiply(ans, "3");
+                ans = Converter.multiply(ans, "12");
+                return ans;
             case FOOT:
-                return value * 1760 * 3;
+                ans = Converter.multiply(value, "1760");
+                ans = Converter.multiply(ans, "3");
+                return ans;
             case YARD:
-                return value * 1760;
+                ans = Converter.multiply(value, "1760");
+                return ans;
             case MILE:
                 return value;
             default:
