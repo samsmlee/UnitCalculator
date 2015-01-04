@@ -16,6 +16,8 @@ public class DisplayUpdater {
 
     protected boolean aboutToReset;
 
+    protected final int maxlength;
+
     public DisplayUpdater(DisplayUpdateListener display) {
         if (display == null) {
             throw new IllegalArgumentException("DisplayUpdateListener is required");
@@ -24,6 +26,7 @@ public class DisplayUpdater {
         currDisplay = new StringBuilder(" 0");
         hasDecimalPoint = false;
         aboutToReset = false;
+        maxlength = display.maxLength();
     }
 
     public void enterNumber(Key key) {
@@ -48,6 +51,11 @@ public class DisplayUpdater {
             case NINE:
                 if (aboutToReset)
                     reset();
+
+                // limit the length of currDisplay
+                if (currDisplay.length() >= maxlength) {
+                    return;
+                }
                 if (currDisplay.toString().equals(" 0")) {
                     currDisplay.replace(1, 1 + key.toString().length(), key.toString());
                 } else {
@@ -65,6 +73,10 @@ public class DisplayUpdater {
         if (!hasDecimalPoint || aboutToReset) {
             if (aboutToReset)
                 reset();
+            // limit the length of currDisplay
+            if (currDisplay.length() >= maxlength) {
+                return;
+            }
             currDisplay.append(Key.DOT);
             hasDecimalPoint = true;
             display.updateFromUnit(currDisplay.toString());

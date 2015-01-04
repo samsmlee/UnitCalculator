@@ -46,4 +46,9 @@ public class DisplayFragment extends Fragment implements DisplayUpdateListener {
 
     }
 
+    @Override
+    public int maxLength() {
+        return getActivity().getResources().getInteger(R.integer.from_unit_display_maxlength);
+    }
+
 }

@@ -8,7 +8,7 @@
         android:id="@+id/fromScreen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:maxLength="12"
+        android:maxLength="@integer/from_unit_display_maxlength"
         android:gravity="left"
         android:text="From"
         android:textSize="@dimen/wordFrom_display_fontsize"/>
