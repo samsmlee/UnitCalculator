@@ -81,4 +81,9 @@ public enum SimpleUnit {
         return lengthUnits.toArray(new SimpleUnit[lengthUnits.size()]);
     }
 
+    @Override
+    public String toString() {
+        String str = super.toString();
+        return str.replace('_', ' ');
+    }
 }
