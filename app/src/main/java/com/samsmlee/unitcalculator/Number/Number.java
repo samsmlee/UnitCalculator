@@ -31,7 +31,7 @@ public class Number {
             throw new IllegalArgumentException("Unit cannot be null");
         this.unit = unit;
         this.type = unit.getType();
-        this.value = new BigDecimal(value);
+        this.value = new BigDecimal(value.trim());
     }
 
 

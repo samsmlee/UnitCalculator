@@ -21,7 +21,7 @@ public class DisplayUpdater {
             throw new IllegalArgumentException("DisplayUpdateListener is required");
         }
         this.display = display;
-        currDisplay = new StringBuilder("0");
+        currDisplay = new StringBuilder(" 0");
         hasDecimalPoint = false;
         aboutToReset = false;
     }
@@ -33,8 +33,8 @@ public class DisplayUpdater {
 
         switch (key) {
             case ZERO:
-                // If "0" is displaying, pressing zero does nothing
-                if (currDisplay.toString().equals("0")) {
+                // If " 0" is displaying, pressing zero does nothing
+                if (currDisplay.toString().equals(" 0")) {
                     return;
                 }
             case ONE:
@@ -48,8 +48,8 @@ public class DisplayUpdater {
             case NINE:
                 if (aboutToReset)
                     reset();
-                if (currDisplay.toString().equals("0")) {
-                    currDisplay.replace(0, key.toString().length(), key.toString());
+                if (currDisplay.toString().equals(" 0")) {
+                    currDisplay.replace(1, 1 + key.toString().length(), key.toString());
                 } else {
                     currDisplay.append(key);
                 }
@@ -76,17 +76,17 @@ public class DisplayUpdater {
         if (aboutToReset) {
             aboutToReset = false;
         }
-        // Don't negate if currDisplay is "0"
-        if (currDisplay.toString().equals("0")) {
+        // Don't negate if currDisplay is " 0"
+        if (currDisplay.toString().equals(" 0")) {
             return;
         }
 
         if (currDisplay.charAt(0) == '-') {
             // if already negative, then turn to positive
-            currDisplay.deleteCharAt(0);
+            currDisplay.setCharAt(0, ' ');
         } else {
             // if positive, then turn to positive
-            currDisplay.insert(0, '-');
+            currDisplay.setCharAt(0, '-');
         }
 
         display.updateFromUnit(currDisplay.toString());
@@ -115,8 +115,8 @@ public class DisplayUpdater {
     public void delete() {
         aboutToReset = false;
 
-        // nothing more to delete, if "0"
-        if (currDisplay.toString().equals("0")) {
+        // nothing more to delete, if " 0"
+        if (currDisplay.toString().equals(" 0")) {
             return;
         }
 
@@ -124,16 +124,10 @@ public class DisplayUpdater {
         if (currDisplay.charAt(currDisplay.length() - 1) == '.') {
             hasDecimalPoint = false;
         }
-        if (currDisplay.length() == 1) {
+        if (currDisplay.length() == 2) {
             reset();
         } else if (currDisplay.toString().equals("-0.")) {
             reset();
-        } else if (currDisplay.charAt(0) == '-') {
-            if (currDisplay.length() == 2) {
-                reset();
-            } else {
-                currDisplay.deleteCharAt(currDisplay.length() - 1);
-            }
         } else {
             currDisplay.deleteCharAt(currDisplay.length() - 1);
         }
@@ -144,7 +138,7 @@ public class DisplayUpdater {
     }
 
     protected void reset() {
-        currDisplay = new StringBuilder("0");
+        currDisplay = new StringBuilder(" 0");
         hasDecimalPoint = false;
         aboutToReset = false;
     }
