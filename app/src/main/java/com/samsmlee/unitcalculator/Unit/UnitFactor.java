@@ -9,21 +9,21 @@ import java.math.BigDecimal;
  */
 public enum UnitFactor {
 
-    NANO (0.0000001),
-    MICRO (0.000001),
-    MILLI (0.001),
-    CENTI (0.01),
-    DECI (0.1),
-    ONE (1),
-    KILO (1000);
+    NANO (7),
+    MICRO (6),
+    MILLI (3),
+    CENTI (2),
+    DECI (1),
+    ONE (0),
+    KILO (-3);
 
-    private final double factor;
+    private final int factor;
 
-    UnitFactor(double factor) {
+    UnitFactor(int factor) {
         this.factor = factor;
     }
 
-    public double getFactor() {
+    public int getFactor() {
         return factor;
     }
 
@@ -32,8 +32,8 @@ public enum UnitFactor {
             throw new IllegalArgumentException("Null unit is not allowed");
         }
         BigDecimal ans;
-        ans = Converter.multiply(value, (new Double(fromFactor.getFactor())).toString());
-        ans = Converter.divide(ans, (new Double(toFactor.getFactor())).toString());
+        ans = value.scaleByPowerOfTen(fromFactor.getFactor());
+        ans = ans.scaleByPowerOfTen(toFactor.getFactor() * -1);
 
         return ans;
     }
