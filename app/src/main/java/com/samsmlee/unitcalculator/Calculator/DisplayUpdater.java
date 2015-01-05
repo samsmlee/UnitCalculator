@@ -4,6 +4,8 @@ import com.samsmlee.unitcalculator.Unit.Unit;
 import com.samsmlee.unitcalculator.Number.Number;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 
 /**
  * Created by Sam on 12/29/2014.
@@ -138,6 +140,11 @@ public class DisplayUpdater {
             throw new NullPointerException("Cannot be null");
         }
         n = n.stripTrailingZeros();
+
+        if (n.precision() > display.maxLength()) {
+
+            n = new BigDecimal(n.unscaledValue(), n.scale(), new MathContext(MAX_PRECISION, RoundingMode.HALF_UP));
+        }
 
         if (n.scale() < 0 && n.precision() + (-1 * n.scale()) <= MAX_PRECISION) {
             return n.toPlainString();
