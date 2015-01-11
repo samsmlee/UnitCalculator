@@ -6,6 +6,7 @@ import com.samsmlee.unitcalculator.Unit.UnitFactor;
 
 import junit.framework.TestCase;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 public class NumberTest extends TestCase {
@@ -17,7 +18,7 @@ public class NumberTest extends TestCase {
 
     // Null argument case
     public void testConvert_1Unit_NullArgument() throws Exception {
-        Number n = new Number(UnitBase.METER, 1);
+        Number n = new Number(UnitBase.METER, new BigDecimal("1"));
 
         try {
             n.convert((Unit)null);
@@ -30,7 +31,7 @@ public class NumberTest extends TestCase {
 
     // METER to YARD case
     public void testConvert_1Unit_MeterToYard() throws  Exception {
-        Number n = new Number(UnitBase.METER, 1);
+        Number n = new Number(UnitBase.METER, new BigDecimal("1"));
 
         Unit toUnit = new Unit(UnitBase.YARD, UnitFactor.ONE);
         Number converted = n.convert(toUnit);
@@ -46,7 +47,7 @@ public class NumberTest extends TestCase {
 
     // GRAM to POUND case
     public void testConvert_1Unit_GramToPound() throws  Exception {
-        Number n = new Number(UnitBase.GRAM, 1000);
+        Number n = new Number(UnitBase.GRAM, new BigDecimal("1000"));
 
         Unit toUnit = new Unit(UnitBase.POUND, UnitFactor.ONE);
         Number converted = n.convert(toUnit);
@@ -65,7 +66,7 @@ public class NumberTest extends TestCase {
     ///////////////////////////////////////////////////////////////////////////
     // Null argument case
     public void testConvert_1UnitBase_NullArgument() throws Exception {
-        Number n = new Number(UnitBase.METER, 1);
+        Number n = new Number(UnitBase.METER, new BigDecimal("1"));
 
         try {
             n.convert((UnitBase)null);
@@ -77,7 +78,7 @@ public class NumberTest extends TestCase {
 
     // METER to YARD case
     public void testConvert_1UnitBase_MeterToYard() throws  Exception {
-        Number n = new Number(UnitBase.METER, 1);
+        Number n = new Number(UnitBase.METER, new BigDecimal("1"));
 
         Number converted = n.convert(UnitBase.YARD);
 
@@ -91,7 +92,7 @@ public class NumberTest extends TestCase {
 
     // GRAM to POUND case
     public void testConvert_1UnitBase_GramToPound() throws  Exception {
-        Number n = new Number(UnitBase.GRAM, 1000);
+        Number n = new Number(UnitBase.GRAM, new BigDecimal("1000"));
 
         Number converted = n.convert(UnitBase.POUND);
 
