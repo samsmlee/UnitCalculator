@@ -32,8 +32,8 @@ public enum UnitFactor {
             throw new IllegalArgumentException("Null unit is not allowed");
         }
         BigDecimal ans;
-        ans = value.scaleByPowerOfTen(fromFactor.getFactor());
-        ans = ans.scaleByPowerOfTen(toFactor.getFactor() * -1);
+        ans = value.scaleByPowerOfTen(fromFactor.getFactor() * -1);
+        ans = ans.scaleByPowerOfTen(toFactor.getFactor());
 
         return ans;
     }
