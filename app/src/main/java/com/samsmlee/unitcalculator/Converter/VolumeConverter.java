@@ -51,19 +51,19 @@ public class VolumeConverter {
                 ans = Converter.multiply(value, "1000");
                 return ans;
             case FLUID_OUNCE:
-                ans = Converter.multiply(value, "33814");
+                ans = Converter.multiply(value, "33814.022");
                 return ans;
             case PINT:
-                ans = Converter.multiply(value, "33814");
+                ans = Converter.multiply(value, "33814.022");
                 ans = Converter.divide(ans, "16");
                 return ans;
             case QUART:
-                ans = Converter.multiply(value, "33814");
+                ans = Converter.multiply(value, "33814.022");
                 ans = Converter.divide(ans, "16");
                 ans = Converter.divide(ans, "2");
                 return ans;
             case GALLON:
-                ans = Converter.multiply(value, "33814");
+                ans = Converter.multiply(value, "33814.022");
                 ans = Converter.divide(ans, "16");
                 ans = Converter.divide(ans, "2");
                 ans = Converter.divide(ans, "4");
@@ -82,19 +82,19 @@ public class VolumeConverter {
             case LITER:
                 return value;
             case FLUID_OUNCE:
-                ans = Converter.multiply(value, "33.814");
+                ans = Converter.multiply(value, "33.814022");
                 return ans;
             case PINT:
-                ans = Converter.multiply(value, "33.814");
+                ans = Converter.multiply(value, "33.814022");
                 ans = Converter.divide(ans, "16");
                 return ans;
             case QUART:
-                ans = Converter.multiply(value, "33.814");
+                ans = Converter.multiply(value, "33.814022");
                 ans = Converter.divide(ans, "16");
                 ans = Converter.divide(ans, "2");
                 return ans;
             case GALLON:
-                ans = Converter.multiply(value, "33.814");
+                ans = Converter.multiply(value, "33.814022");
                 ans = Converter.divide(ans, "16");
                 ans = Converter.divide(ans, "2");
                 ans = Converter.divide(ans, "4");
@@ -108,11 +108,11 @@ public class VolumeConverter {
         BigDecimal ans;
         switch (toUnit.getBase()) {
             case CUBIC_METER:
-                ans = Converter.divide(value, "33.814");
+                ans = Converter.divide(value, "33.814022");
                 ans = Converter.divide(ans, "1000");
                 return ans;
             case LITER:
-                ans = Converter.divide(value, "33.814");
+                ans = Converter.divide(value, "33.814022");
                 return ans;
             case FLUID_OUNCE:
                 return value;
@@ -138,12 +138,12 @@ public class VolumeConverter {
         switch (toUnit.getBase()) {
             case CUBIC_METER:
                 ans = Converter.multiply(value, "16");
-                ans = Converter.divide(ans, "33.814");
+                ans = Converter.divide(ans, "33.814022");
                 ans = Converter.divide(ans, "1000");
                 return ans;
             case LITER:
                 ans = Converter.multiply(value, "16");
-                ans = Converter.divide(ans, "33.814");
+                ans = Converter.divide(ans, "33.814022");
                 return ans;
             case FLUID_OUNCE:
                 ans = Converter.multiply(value, "16");
@@ -155,7 +155,7 @@ public class VolumeConverter {
                 return ans;
             case GALLON:
                 ans = Converter.divide(value, "2");
-                ans = Converter.divide(value, "4");
+                ans = Converter.divide(ans, "4");
                 return ans;
             default:
                 throw new UnsupportedOperationException("This unit base, " + toUnit.getBase() + ", is not supported");
@@ -168,13 +168,13 @@ public class VolumeConverter {
             case CUBIC_METER:
                 ans = Converter.multiply(value, "2");
                 ans = Converter.multiply(ans, "16");
-                ans = Converter.divide(ans, "33.814");
+                ans = Converter.divide(ans, "33.814022");
                 ans = Converter.divide(ans, "1000");
                 return ans;
             case LITER:
                 ans = Converter.multiply(value, "2");
                 ans = Converter.multiply(ans, "16");
-                ans = Converter.divide(ans, "33.814");
+                ans = Converter.divide(ans, "33.814022");
                 return ans;
             case FLUID_OUNCE:
                 ans = Converter.multiply(value, "2");
@@ -200,14 +200,14 @@ public class VolumeConverter {
                 ans = Converter.multiply(value, "4");
                 ans = Converter.multiply(ans, "2");
                 ans = Converter.multiply(ans, "16");
-                ans = Converter.divide(ans, "33.814");
+                ans = Converter.divide(ans, "33.814022");
                 ans = Converter.divide(ans, "1000");
                 return ans;
             case LITER:
                 ans = Converter.multiply(value, "4");
                 ans = Converter.multiply(ans, "2");
                 ans = Converter.multiply(ans, "16");
-                ans = Converter.divide(ans, "33.814");
+                ans = Converter.divide(ans, "33.814022");
                 return ans;
             case FLUID_OUNCE:
                 ans = Converter.multiply(value, "4");
