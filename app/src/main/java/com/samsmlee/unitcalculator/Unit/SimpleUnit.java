@@ -37,6 +37,7 @@ public enum SimpleUnit {
     // VOLUME
     CUBIC_METER(UnitBase.CUBIC_METER, UnitFactor.ONE, UnitType.VOLUME),
     LITER(UnitBase.LITER, UnitFactor.ONE, UnitType.VOLUME),
+    MILLILITER(UnitBase.LITER, UnitFactor.MILLI, UnitType.VOLUME),
     FLUID_OUNCE(UnitBase.FLUID_OUNCE, UnitFactor.ONE, UnitType.VOLUME),
     PINT(UnitBase.PINT, UnitFactor.ONE, UnitType.VOLUME),
     QUART(UnitBase.QUART, UnitFactor.ONE, UnitType.VOLUME),
