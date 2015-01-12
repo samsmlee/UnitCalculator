@@ -51,7 +51,7 @@ public class MassConverter {
                 return ans;
             case GRAM:
                 ans = Converter.divide(value, "16");
-                ans = Converter.multiply(ans, "453.592");
+                ans = Converter.multiply(ans, "453.59237");
                 return ans;
             case SHORT_TON:
                 ans = Converter.divide(value, "16");
@@ -59,7 +59,7 @@ public class MassConverter {
                 return ans;
             case METRIC_TON:
                 ans = Converter.divide(value, "16");
-                ans = Converter.divide(ans, "453.592");
+                ans = Converter.divide(ans, "453.59237");
                 ans = Converter.divide(ans, "1000");
                 ans = Converter.divide(ans, "1000");
                 return ans;
@@ -78,13 +78,13 @@ public class MassConverter {
             case POUND:
                 return value;
             case GRAM:
-                ans = Converter.multiply(value, "453.592");
+                ans = Converter.multiply(value, "453.59237");
                 return ans;
             case SHORT_TON:
                 ans = Converter.divide(value, "2000");
                 return ans;
             case METRIC_TON:
-                ans = Converter.multiply(value, "453.592");
+                ans = Converter.multiply(value, "453.59237");
                 ans = Converter.divide(ans, "1000");
                 ans = Converter.divide(ans, "1000");
                 return ans;
@@ -98,16 +98,16 @@ public class MassConverter {
         switch (toUnit.getBase()) {
 
             case OUNCE:
-                ans = Converter.divide(value, "453.592");
+                ans = Converter.divide(value, "453.59237");
                 ans = Converter.multiply(ans, "16");
                 return ans;
             case POUND:
-                ans = Converter.divide(value, "453.592");
+                ans = Converter.divide(value, "453.59237");
                 return ans;
             case GRAM:
                 return value;
             case SHORT_TON:
-                ans = Converter.divide(value, "453.592");
+                ans = Converter.divide(value, "453.59237");
                 ans = Converter.divide(ans, "2000");
                 return ans;
             case METRIC_TON:
@@ -132,13 +132,13 @@ public class MassConverter {
                 return ans;
             case GRAM:
                 ans = Converter.multiply(value, "2000");
-                ans = Converter.multiply(ans, "453.592");
+                ans = Converter.multiply(ans, "453.59237");
                 return ans;
             case SHORT_TON:
                 return value;
             case METRIC_TON:
                 ans = Converter.multiply(value, "2000");
-                ans = Converter.multiply(ans, "453.592");
+                ans = Converter.multiply(ans, "453.59237");
                 ans = Converter.divide(ans, "1000");
                 ans = Converter.divide(ans, "1000");
                 return ans;
@@ -154,13 +154,13 @@ public class MassConverter {
             case OUNCE:
                 ans = Converter.multiply(value, "1000");
                 ans = Converter.multiply(ans, "1000");
-                ans = Converter.divide(ans, "453.592");
+                ans = Converter.divide(ans, "453.59237");
                 ans = Converter.multiply(ans, "16");
                 return ans;
             case POUND:
                 ans = Converter.multiply(value, "1000");
                 ans = Converter.multiply(ans, "1000");
-                ans = Converter.divide(ans, "453.592");
+                ans = Converter.divide(ans, "453.59237");
                 return ans;
             case GRAM:
                 ans = Converter.multiply(value, "1000");
@@ -169,7 +169,7 @@ public class MassConverter {
             case SHORT_TON:
                 ans = Converter.multiply(value, "1000");
                 ans = Converter.multiply(ans, "1000");
-                ans = Converter.divide(ans, "453.592");
+                ans = Converter.divide(ans, "453.59237");
                 ans = Converter.divide(ans, "2000");
                 return ans;
             case METRIC_TON:
