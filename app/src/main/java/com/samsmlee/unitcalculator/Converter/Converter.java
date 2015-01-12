@@ -35,7 +35,7 @@ public class Converter {
         if (n1 == null || n2 == null) {
             throw new NullPointerException("Cannot subtract a null value");
         }
-        return n1.add(new BigDecimal(n2));
+        return n1.subtract(new BigDecimal(n2));
     }
 
 
