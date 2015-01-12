@@ -142,6 +142,23 @@ public class SignKeyTest extends ActivityInstrumentationTestCase2<CalculatorActi
 
     }
 
+    @UiThreadTest
+    public void testSignKey8() throws Exception {
+
+        // press SIGN key after "-12345" then EQUAL key
+        pressKey(R.id.one_key);
+        pressKey(R.id.two_key);
+        pressKey(R.id.three_key);
+        pressKey(R.id.four_key);
+        pressKey(R.id.five_key);
+        pressKey(R.id.sign_key);
+        pressKey(R.id.equal_key);
+        pressKey(R.id.sign_key);
+        assertEquals(" 12345", fromScreenContent());
+        assertEquals("-12345", toScreenContent());
+
+    }
+
     protected void pressKey(final int id) {
         mActivity.findViewById(id).performClick();
     }
