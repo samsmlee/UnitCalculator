@@ -87,9 +87,9 @@ public class TemperatureConverter {
                 return ans;
             case FAHRENHEIT:
                 ans = Converter.subtract(value, "273.15");
-                ans = Converter.subtract(ans, "32");
-                ans = Converter.multiply(ans, "5");
-                ans = Converter.divide(ans, "9");
+                ans = Converter.multiply(ans, "9");
+                ans = Converter.divide(ans, "5");
+                ans = Converter.add(ans, "32");
                 return ans;
             case KELVIN:
                 return value;
