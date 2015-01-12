@@ -9,11 +9,11 @@ import com.samsmlee.unitcalculator.R;
 import com.samsmlee.unitcalculator.Unit.UnitType.UnitType;
 import com.samsmlee.unitcalculator.UnitTypeActivity;
 
-public class CalculatorActivityTest extends ActivityInstrumentationTestCase2<CalculatorActivity> {
+public class ClearKeyTest extends ActivityInstrumentationTestCase2<CalculatorActivity> {
 
     private CalculatorActivity mActivity;
 
-    public CalculatorActivityTest() {
+    public ClearKeyTest() {
         super(CalculatorActivity.class);
     }
 
