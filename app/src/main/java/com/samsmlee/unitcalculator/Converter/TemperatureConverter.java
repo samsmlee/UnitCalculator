@@ -26,8 +26,8 @@ public class TemperatureConverter {
 
             case CELSIUS:
                 return convertFromCelsius(toUnit, value);
-            case FARHENHEIT:
-                return convertFromFarhenheit(toUnit, value);
+            case FAHRENHEIT:
+                return convertFromFahrenheit(toUnit, value);
             case KELVIN:
                 return convertFromKelvin(toUnit, value);
             default:
@@ -42,7 +42,7 @@ public class TemperatureConverter {
 
             case CELSIUS:
                 return value;
-            case FARHENHEIT:
+            case FAHRENHEIT:
                 ans = Converter.multiply(value, "9");
                 ans = Converter.divide(ans, "5");
                 ans = Converter.add(ans, "32");
@@ -55,7 +55,7 @@ public class TemperatureConverter {
         }
     }
 
-    private static BigDecimal convertFromFarhenheit(Unit toUnit, BigDecimal value) {
+    private static BigDecimal convertFromFahrenheit(Unit toUnit, BigDecimal value) {
 
         BigDecimal ans;
         switch (toUnit.getBase()) {
@@ -65,7 +65,7 @@ public class TemperatureConverter {
                 ans = Converter.multiply(ans, "5");
                 ans = Converter.divide(ans, "9");
                 return ans;
-            case FARHENHEIT:
+            case FAHRENHEIT:
                 return value;
             case KELVIN:
                 ans = Converter.subtract(value, "32");
@@ -85,7 +85,7 @@ public class TemperatureConverter {
             case CELSIUS:
                 ans = Converter.subtract(value, "273.15");
                 return ans;
-            case FARHENHEIT:
+            case FAHRENHEIT:
                 ans = Converter.subtract(value, "273.15");
                 ans = Converter.subtract(ans, "32");
                 ans = Converter.multiply(ans, "5");

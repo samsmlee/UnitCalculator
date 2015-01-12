@@ -30,7 +30,7 @@ public enum SimpleUnit {
     SHORT_TON(UnitBase.SHORT_TON, UnitFactor.ONE, UnitType.MASS),
 
     // TEMPERATURE
-    FARHENHEIT(UnitBase.FARHENHEIT, UnitFactor.ONE, UnitType.TEMPERATURE),
+    FAHRENHEIT(UnitBase.FAHRENHEIT, UnitFactor.ONE, UnitType.TEMPERATURE),
     CELSIUS(UnitBase.CELSIUS, UnitFactor.ONE, UnitType.TEMPERATURE),
     KELVIN(UnitBase.KELVIN, UnitFactor.ONE, UnitType.TEMPERATURE),
 

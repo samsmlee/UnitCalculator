@@ -28,7 +28,7 @@ public enum UnitBase {
 
     // TEMPERATURE
     CELSIUS (UnitType.TEMPERATURE),
-    FARHENHEIT (UnitType.TEMPERATURE),
+    FAHRENHEIT(UnitType.TEMPERATURE),
     KELVIN (UnitType.TEMPERATURE),
 
     // VOLUME
