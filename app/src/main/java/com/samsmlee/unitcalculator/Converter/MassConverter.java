@@ -59,7 +59,7 @@ public class MassConverter {
                 return ans;
             case METRIC_TON:
                 ans = Converter.divide(value, "16");
-                ans = Converter.divide(ans, "453.59237");
+                ans = Converter.multiply(ans, "453.59237");
                 ans = Converter.divide(ans, "1000");
                 ans = Converter.divide(ans, "1000");
                 return ans;
